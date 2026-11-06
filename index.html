@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean Water Awareness</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #183344;
+    line-height: 1.6;
+    background: #f4fbff;
+}
+
+header {
+    background: #006994;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h2 {
+    font-size: 23px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 8px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #a9f0ff;
+}
+
+.hero {
+    min-height: 430px;
+    padding: 90px 8%;
+    color: white;
+    text-align: center;
+    background:
+    linear-gradient(#003b5caa, #003b5caa),
+    url("https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=1600")
+    center/cover;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    font-size: 19px;
+    max-width: 750px;
+    margin: auto;
+}
+
+.btn {
+    display: inline-block;
+    background: #00a8cc;
+    color: white;
+    padding: 12px 25px;
+    margin-top: 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 55px 8%;
+}
+
+.section-title {
+    text-align: center;
+    color: #006994;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.intro {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    font-size: 17px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.card h3 {
+    color: #007da5;
+    margin-bottom: 12px;
+}
+
+.photo {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 9px;
+    margin-bottom: 12px;
+}
+
+.blue-section {
+    background: #e1f5fc;
+}
+
+ul {
+    padding-left: 22px;
+}
+
+li {
+    margin-bottom: 9px;
+}
+
+footer {
+    background: #004b70;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+@media(max-width: 650px) {
+    header {
+        justify-content: center;
+        gap: 12px;
+    }
+    nav {
+        text-align: center;
+    }
+    nav a {
+        display: inline-block;
+        font-size: 14px;
+    }
+    .hero h1 {
+        font-size: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>💧 Clean Water Awareness</h2>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#causes">Causes</a>
+        <a href="#effects">Effects</a>
+        <a href="#prevention">Prevention</a>
+        <a href="#survey">Survey</a>
+    </nav>
+</header>
+
+<div class="hero" id="home">
+    <h1>Save Water, Save Life</h1>
+    <p>Promoting Clean Water and Environmental Awareness in Society</p>
+    <a href="#about" class="btn">Explore More</a>
+</div>
+
+<section id="about">
+    <h2 class="section-title">About Water Pollution</h2>
+    <p class="intro">
+        Water pollution occurs when harmful substances such as waste,
+        chemicals, plastics and sewage enter rivers, lakes and other
+        water sources. It affects human health, aquatic life and the
+        environment. Clean water is essential for every living being.
+    </p>
+</section>
+
+<section class="blue-section" id="causes">
+    <h2 class="section-title">Major Causes of Water Pollution</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>🏭 Industrial Waste</h3>
+            <p>Factories may release harmful chemicals and untreated
+            wastewater into nearby water sources.</p>
+        </div>
+        <div class="card">
+            <h3>🗑️ Plastic Waste</h3>
+            <p>Plastic bags, bottles and other waste pollute rivers,
+            lakes and ponds.</p>
+        </div>
+        <div class="card">
+            <h3>🚰 Sewage</h3>
+            <p>Untreated sewage and household wastewater can
+            contaminate water.</p>
+        </div>
+        <div class="card">
+            <h3>🌾 Agricultural Waste</h3>
+            <p>Excess fertilizers and pesticides can enter water
+            bodies through rainwater runoff.</p>
+        </div>
+    </div>
+</section>
+
+<section id="effects">
+    <h2 class="section-title">Effects of Water Pollution</h2>
+    <div class="cards">
+        <div class="card">
+            <img class="photo"
+            src="https://images.unsplash.com/photo-1530053969600-caed2596d242?w=700"
+            alt="Polluted water">
+            <h3>Human Health</h3>
+            <p>Contaminated water can spread diseases and create
+            serious health problems.</p>
+        </div>
+        <div class="card">
+            <img class="photo"
+            src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=700"
+            alt="Aquatic life">
+            <h3>Aquatic Life</h3>
+            <p>Pollution damages aquatic habitats and threatens
+            fish and other organisms.</p>
+        </div>
+        <div class="card">
+            <img class="photo"
+            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=700"
+            alt="Natural environment">
+            <h3>Environment</h3>
+            <p>Pollution reduces water quality and damages
+            natural ecosystems.</p>
+        </div>
+    </div>
+</section>
+
+<section class="blue-section" id="prevention">
+    <h2 class="section-title">Prevention Methods</h2>
+    <div class="intro">
+        <ul>
+            <li>Do not throw plastic and garbage into water bodies.</li>
+            <li>Treat sewage and industrial wastewater before discharge.</li>
+            <li>Reduce the use of harmful chemical fertilizers and pesticides.</li>
+            <li>Keep rivers, lakes and ponds clean.</li>
+            <li>Promote rainwater harvesting.</li>
+            <li>Conduct community awareness programmes.</li>
+            <li>Encourage everyone to save water.</li>
+        </ul>
+    </div>
+</section>
+
+<section id="survey">
+    <h2 class="section-title">Community Awareness Survey</h2>
+    <p class="intro">
+        A community survey can help understand people's awareness
+        of water pollution and clean water practices.
+    </p>
+    <div class="cards" style="margin-top:25px">
+        <div class="card">
+            <h3>Survey Questions</h3>
+            <ol>
+                <li>Do you know the causes of water pollution?</li>
+                <li>Do you use safe drinking water?</li>
+                <li>How do you dispose of household waste?</li>
+                <li>Do you participate in cleanliness activities?</li>
+                <li>What steps can improve water quality in your area?</li>
+            </ol>
+        </div>
+        <div class="card">
+            <h3>Our Project Objective</h3>
+            <p>To understand community awareness, identify local
+            water-related concerns and encourage responsible
+            practices for protecting water resources.</p>
+        </div>
+    </div>
+</section>
+
+<section class="blue-section">
+    <h2 class="section-title">Our Message</h2>
+    <p class="intro">
+        Every drop of clean water matters. Protect water resources
+        today for a healthier and cleaner tomorrow.
+    </p>
+</section>
+
+<footer>
+    <h3>💧 Clean Water Awareness Project</h3>
+    <p>Community Service Project | AI&DS-C</p>
+    <p>Promoting Clean Water and Environmental Awareness in Society</p>
+</footer>
+
+</body>
+</html>
