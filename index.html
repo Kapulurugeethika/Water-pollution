@@ -1,14 +1,10 @@
-# Complete Water Pollution Project Website
-
-Create a file named `index.html` and paste the following code into it.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Water Pollution | Stonehousepet, Nellore</title>
+
+<title>Clean Water | Community Service Project</title>
 
 <style>
 * {
@@ -20,84 +16,84 @@ Create a file named `index.html` and paste the following code into it.
 
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #24352f;
-    background: #f5fbf8;
+    background: #f4faff;
+    color: #18364a;
+    line-height: 1.7;
 }
 
 header {
-    background: #075b45;
+    background: #063b59;
     color: white;
-    padding: 15px 7%;
+    padding: 17px 7%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 23px;
     font-weight: bold;
 }
 
 nav {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 18px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
+    font-size: 14px;
     font-weight: bold;
 }
 
 nav a:hover {
-    color: #a9f0d1;
-}
-
-.menu-btn {
-    display: none;
-    font-size: 25px;
-    cursor: pointer;
+    color: #56d9f4;
 }
 
 .hero {
-    min-height: 85vh;
+    min-height: 490px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 30px;
     color: white;
+    padding: 70px 8%;
     background:
-      linear-gradient(rgba(0,50,40,.65), rgba(0,50,40,.65)),
-      url("https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=1600&q=80");
-    background-size: cover;
-    background-position: center;
+    linear-gradient(rgba(0,35,65,.65),rgba(0,35,65,.65)),
+    url("https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=1600")
+    center/cover;
+}
+
+.hero-content {
+    max-width: 850px;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 15px;
+    font-size: 45px;
+    line-height: 1.2;
+    margin-bottom: 20px;
 }
 
 .hero p {
-    font-size: 20px;
-    max-width: 750px;
+    font-size: 19px;
 }
 
 .btn {
     display: inline-block;
-    margin-top: 25px;
-    padding: 12px 25px;
-    background: #a6edc9;
-    color: #064b38;
+    background: #00a9d6;
+    color: white;
     text-decoration: none;
-    border-radius: 25px;
+    padding: 12px 28px;
+    border-radius: 5px;
+    margin-top: 25px;
     font-weight: bold;
+}
+
+.btn:hover {
+    background: #007ba8;
 }
 
 section {
@@ -106,140 +102,145 @@ section {
 
 .section-title {
     text-align: center;
-    color: #075b45;
-    font-size: 32px;
-    margin-bottom: 30px;
+    color: #00658d;
+    font-size: 31px;
+    margin-bottom: 15px;
 }
 
-.intro {
-    max-width: 900px;
-    margin: auto;
+.section-intro {
     text-align: center;
-    font-size: 17px;
+    max-width: 850px;
+    margin: 0 auto 35px;
 }
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
     gap: 25px;
 }
 
 .card {
     background: white;
     padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.07);
     transition: .3s;
 }
 
 .card:hover {
-    transform: translateY(-7px);
+    transform: translateY(-5px);
 }
 
 .card h3 {
-    color: #087653;
+    color: #007ba8;
     margin-bottom: 12px;
 }
 
-.card img {
+.card-image {
     width: 100%;
-    height: 170px;
+    height: 190px;
     object-fit: cover;
-    border-radius: 9px;
-    margin-bottom: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
 
-.green {
-    background: #e7f5ed;
+.light {
+    background: #e7f6fc;
 }
 
-.local {
-    background: #dff3ed;
-    border-left: 5px solid #07845d;
-    padding: 25px;
-    border-radius: 10px;
-    max-width: 950px;
+.about-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    align-items: center;
+    gap: 35px;
+}
+
+.about-layout img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+ul {
+    padding-left: 23px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.timeline {
+    max-width: 850px;
     margin: auto;
+}
+
+.week {
+    background: white;
+    padding: 18px 22px;
+    margin: 15px 0;
+    border-left: 5px solid #00a9d6;
+    border-radius: 7px;
+    box-shadow: 0 3px 10px #0000000d;
+}
+
+.week h3 {
+    color: #00658d;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
 }
 
 .gallery img {
     width: 100%;
-    height: 220px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
-form {
+.student {
     max-width: 650px;
     margin: auto;
     background: white;
-    padding: 25px;
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    box-shadow: 0 3px 15px #00000010;
 }
 
-input, textarea, select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0 18px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 15px;
-}
-
-button {
-    background: #087653;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background: #064b38;
-}
-
-#surveyMessage {
-    margin-top: 15px;
-    color: #087653;
-    font-weight: bold;
+.student p {
+    padding: 8px 0;
+    border-bottom: 1px solid #e8edf0;
 }
 
 footer {
-    background: #064b38;
+    background: #063b59;
     color: white;
     text-align: center;
-    padding: 25px;
+    padding: 35px 15px;
 }
 
-@media(max-width: 800px) {
-    .menu-btn {
-        display: block;
+footer a {
+    color: #70e0fa;
+}
+
+@media(max-width:700px) {
+    header {
+        justify-content: center;
+        gap: 15px;
     }
 
     nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 65px;
-        left: 0;
-        width: 100%;
-        background: #075b45;
-        padding: 20px;
-    }
-
-    nav.active {
-        display: flex;
+        justify-content: center;
+        gap: 12px;
     }
 
     .hero h1 {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     .hero p {
-        font-size: 17px;
+        font-size: 16px;
     }
 }
 </style>
@@ -248,236 +249,279 @@ footer {
 <body>
 
 <header>
-    <div class="logo">💧 Aqua Life</div>
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-    <nav id="navbar">
+    <div class="logo">💧 CLEAN WATER</div>
+    <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#causes">Causes</a>
-        <a href="#effects">Effects</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#study">Study Area</a>
+        <a href="#prevention">Solutions</a>
+        <a href="#activities">Activities</a>
         <a href="#gallery">Gallery</a>
-        <a href="#survey">Survey</a>
+        <a href="#contact">Contact</a>
     </nav>
 </header>
 
-<!-- HOME -->
 <div class="hero" id="home">
-    <h1>Save Water, Save Life</h1>
-    <p>Understanding water pollution and creating awareness for a cleaner and healthier environment in Stonehousepet, Nellore.</p>
-    <a href="#about" class="btn">Explore Project</a>
+    <div class="hero-content">
+        <h1>"SAVE WATER,SAVE LIFE"</h1>
+        <p>
+            A Community Service Project focused on understanding
+            water pollution and encouraging people to protect
+            our valuable water resources.
+        </p>
+        <a href="#about" class="btn">Explore Our Project</a>
+    </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
-    <h2 class="section-title">About Water Pollution</h2>
-    <p class="intro">
-        Water pollution occurs when harmful substances such as waste,
-        chemicals, sewage and plastics enter rivers, lakes, ponds and
-        groundwater. It affects humans, animals, plants and the entire
-        environment. Clean water is essential for every living organism.
+    <h2 class="section-title">About Our Project</h2>
+    <p class="section-intro">
+        Water is one of the most important natural resources.
+        Water pollution occurs when harmful substances enter
+        rivers, lakes, ponds and other water sources.
+        Our project aims to create awareness about clean water,
+        environmental protection and community participation.
+    </p>
+
+    <div class="about-layout">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900"
+        alt="Natural water environment">
+
+        <div>
+            <h3>Our Main Objectives</h3>
+            <ul>
+                <li>Understand the causes of water pollution.</li>
+                <li>Study its effects on people and nature.</li>
+                <li>Understand community awareness about clean water.</li>
+                <li>Encourage responsible waste disposal.</li>
+                <li>Promote water conservation practices.</li>
+                <li>Encourage community participation.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="light" id="causes">
+    <h2 class="section-title">Causes of Water Pollution</h2>
+    <p class="section-intro">
+        Several human activities contribute to the pollution
+        of water resources.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>🏭 Industrial Waste</h3>
+            <p>Untreated industrial wastewater can introduce
+            harmful substances into water sources.</p>
+        </div>
+
+        <div class="card">
+            <h3>🗑️ Plastic Waste</h3>
+            <p>Plastic bags, bottles and garbage can contaminate
+            rivers, lakes and ponds.</p>
+        </div>
+
+        <div class="card">
+            <h3>🚰 Domestic Sewage</h3>
+            <p>Improper disposal of household wastewater
+            can reduce water quality.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌾 Agricultural Chemicals</h3>
+            <p>Fertilizers and pesticides can enter water
+            bodies through surface runoff.</p>
+        </div>
+    </div>
+</section>
+
+<section id="effects">
+    <h2 class="section-title">Effects of Water Pollution</h2>
+    <div class="cards">
+        <div class="card">
+            <img class="card-image"
+            src="https://images.unsplash.com/photo-1530053969600-caed2596d242?w=700"
+            alt="Water environment">
+            <h3>Human Health</h3>
+            <p>Unsafe water can spread waterborne diseases
+            and create health problems.</p>
+        </div>
+
+        <div class="card">
+            <img class="card-image"
+            src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=700"
+            alt="Aquatic life">
+            <h3>Aquatic Life</h3>
+            <p>Pollution can damage aquatic habitats and
+            affect fish and other organisms.</p>
+        </div>
+
+        <div class="card">
+            <img class="card-image"
+            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=700"
+            alt="Natural landscape">
+            <h3>Environment</h3>
+            <p>Pollution affects ecosystems and reduces
+            the quality of natural water resources.</p>
+        </div>
+    </div>
+</section>
+
+<section class="light" id="prevention">
+    <h2 class="section-title">Prevention and Solutions</h2>
+    <p class="section-intro">
+        Everyone has a role in protecting water resources.
+        Small responsible actions can make a difference.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Keep Water Sources Clean</h3>
+            <p>Do not throw plastic, garbage or other waste
+            into rivers and ponds.</p>
+        </div>
+
+        <div class="card">
+            <h3>Treat Wastewater</h3>
+            <p>Ensure wastewater is treated properly before
+            it is released into water bodies.</p>
+        </div>
+
+        <div class="card">
+            <h3>Save Water</h3>
+            <p>Avoid unnecessary water wastage and
+            encourage conservation.</p>
+        </div>
+
+        <div class="card">
+            <h3>Create Awareness</h3>
+            <p>Share information about water pollution
+            and environmental protection.</p>
+        </div>
+    </div>
+</section>
+
+<section id="activities">
+    <h2 class="section-title">Project Activities</h2>
+    <p class="section-intro">
+        The following sections provide a structure for documenting
+        the eight-week Community Service Project.
+    </p>
+
+    <div class="timeline">
+        <div class="week">
+            <h3>Week 1 – Planning and Questionnaire Design</h3>
+            <p>Project planning, community selection and preparation
+            of survey questions.</p>
+        </div>
+
+        <div class="week">
+            <h3>Week 2 – Community Survey</h3>
+            <p>Document the socio-economic survey and
+            water-related information collected.</p>
+        </div>
+
+        <div class="week">
+            <h3>Week 3 – Awareness Campaign</h3>
+            <p>Document awareness activities and educational
+            information shared with the community.</p>
+        </div>
+
+        <div class="week">
+            <h3>Week 4 – Deep-Dive Survey</h3>
+            <p>Record observations and identify water pollution
+            concerns in the selected area.</p>
+        </div>
+
+        <div class="week">
+            <h3>Week 5 – Community Intervention</h3>
+            <p>Document the project implementation and
+            community participation.</p>
+        </div>
+
+        <div class="week">
+            <h3>Week 6 – Impact Assessment</h3>
+            <p>Record follow-up observations and feedback.</p>
+        </div>
+
+        <div class="week">
+            <h3>Week 7 – Report Preparation</h3>
+            <p>Organize collected information, photographs
+            and project findings.</p>
+        </div>
+
+        <div class="week">
+            <h3>Week 8 – Final Documentation</h3>
+            <p>Prepare and submit the final Community
+            Service Project report.</p>
+        </div>
+    </div>
+</section>
+
+<section class="light" id="survey">
+    <h2 class="section-title">Community Survey</h2>
+    <p class="section-intro">
+        Use these questions to understand community awareness
+        about water pollution.
+    </p>
+
+    <div class="card">
+        <ol>
+            <li>Are you aware of the causes of water pollution?</li>
+            <li>What is your main source of drinking water?</li>
+            <li>Do you know the importance of safe drinking water?</li>
+            <li>How do you dispose of household waste?</li>
+            <li>What steps can improve water cleanliness in your area?</li>
+            <li>Would you participate in water conservation activities?</li>
+        </ol>
+    </div>
+    <p style="text-align:center;margin-top:20px">
+        <b>Note:</b> Add actual survey results after collecting
+        responses from community members.
     </p>
 </section>
 
-<!-- CAUSES -->
-<section class="green" id="causes">
-    <h2 class="section-title">Major Causes of Water Pollution</h2>
+<section id="gallery">
+    <h2 class="section-title">Project Gallery</h2>
+    <p class="section-intro">
+        Add your original photographs of community surveys,
+        awareness activities and project work here.
+    </p>
 
-    <div class="cards">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=600&q=80" alt="Plastic waste">
-            <h3>Plastic Waste</h3>
-            <p>Plastic bags and bottles thrown into water bodies cause serious environmental damage.</p>
-        </div>
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=700"
+        alt="Clean water">
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=600&q=80" alt="Industrial pollution">
-            <h3>Industrial Waste</h3>
-            <p>Untreated industrial chemicals can contaminate surface water and groundwater.</p>
-        </div>
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=700"
+        alt="Natural water source">
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80" alt="Wastewater">
-            <h3>Domestic Sewage</h3>
-            <p>Improper disposal of household wastewater can introduce harmful germs into water.</p>
-        </div>
+        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=700"
+        alt="Ocean and water">
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" alt="Agriculture">
-            <h3>Agricultural Runoff</h3>
-            <p>Fertilisers and pesticides may flow from agricultural land into nearby water sources.</p>
-        </div>
+        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=700"
+        alt="Environment">
     </div>
 </section>
 
-<!-- EFFECTS -->
-<section id="effects">
-    <h2 class="section-title">Effects of Water Pollution</h2>
+<section class="light" id="contact">
+    <h2 class="section-title">About the Student</h2>
 
-    <div class="cards">
-        <div class="card">
-            <h3>Human Health</h3>
-            <p>Contaminated drinking water can spread diseases such as diarrhoea, cholera and typhoid.</p>
-        </div>
-
-        <div class="card">
-            <h3>Marine Life</h3>
-            <p>Pollution can harm fish and other aquatic organisms and disturb food chains.</p>
-        </div>
-
-        <div class="card">
-            <h3>Environment</h3>
-            <p>Polluted water damages ecosystems and reduces the availability of clean water.</p>
-        </div>
-
-        <div class="card">
-            <h3>Economy</h3>
-            <p>Water pollution can affect fishing, agriculture, tourism and community livelihoods.</p>
-        </div>
-    </div>
-</section>
-
-<!-- SOLUTIONS -->
-<section class="green" id="solutions">
-    <h2 class="section-title">Solutions to Water Pollution</h2>
-
-    <div class="cards">
-        <div class="card">
-            <h3>🚰 Treat Wastewater</h3>
-            <p>Treat sewage and industrial wastewater before releasing it into the environment.</p>
-        </div>
-
-        <div class="card">
-            <h3>♻️ Reduce Plastic</h3>
-            <p>Avoid single-use plastics and dispose of waste in appropriate bins.</p>
-        </div>
-
-        <div class="card">
-            <h3>🌱 Plant Trees</h3>
-            <p>Protect green spaces and plant trees to support healthy ecosystems.</p>
-        </div>
-
-        <div class="card">
-            <h3>📢 Create Awareness</h3>
-            <p>Educate communities about clean water, sanitation and responsible waste disposal.</p>
-        </div>
-    </div>
-</section>
-
-<!-- STUDY AREA -->
-<section id="study">
-    <h2 class="section-title">Our Study Area – Stonehousepet, Nellore</h2>
-
-    <div class="local">
-        <h3>Community Water Pollution Awareness Study</h3>
-        <p>
-            This project focuses on understanding water pollution concerns
-            in Stonehousepet, Nellore, Andhra Pradesh. The study can examine
-            nearby water sources, waste disposal practices, drainage systems
-            and public awareness about clean water.
-        </p>
-        <br>
-        <p><strong>Study objectives:</strong></p>
-        <ul>
-            <li>Understand possible sources of water pollution.</li>
-            <li>Observe local waste disposal and drainage practices.</li>
-            <li>Understand community awareness about water quality.</li>
-            <li>Suggest practical steps to protect local water resources.</li>
-        </ul>
-        <br>
-        <p><strong>Note:</strong> Add your own field observations and water test results here. Do not report pollution measurements unless they have actually been collected and verified.</p>
-    </div>
-</section>
-
-<!-- GALLERY -->
-<section class="green" id="gallery">
-    <h2 class="section-title">Water Pollution Gallery</h2>
-
-    <div class="cards gallery">
-        <img src="https://images.unsplash.com/photo-1498623116890-37e912163d5d?auto=format&fit=crop&w=700&q=80" alt="Water environment">
-        <img src="https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=700&q=80" alt="Plastic pollution">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80" alt="Natural water">
-        <img src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=700&q=80" alt="Clean water">
-    </div>
-</section>
-
-<!-- SURVEY -->
-<section id="survey">
-    <h2 class="section-title">Community Awareness Survey</h2>
-
-    <form id="surveyForm">
-        <label>Your Name</label>
-        <input type="text" id="name" placeholder="Enter your name" required>
-
-        <label>Do you think water pollution is a serious problem?</label>
-        <select id="opinion" required>
-            <option value="">Select your answer</option>
-            <option>Yes</option>
-            <option>No</option>
-            <option>Not Sure</option>
-        </select>
-
-        <label>What is a major cause of water pollution?</label>
-        <select id="cause" required>
-            <option value="">Select an option</option>
-            <option>Plastic Waste</option>
-            <option>Domestic Sewage</option>
-            <option>Industrial Waste</option>
-            <option>Agricultural Runoff</option>
-        </select>
-
-        <label>Your Suggestions</label>
-        <textarea id="suggestion" rows="4" placeholder="Share your suggestions"></textarea>
-
-        <button type="submit">Submit Survey</button>
-        <p id="surveyMessage"></p>
-    </form>
-</section>
-
-<!-- CONTACT -->
-<section class="green" id="contact">
-    <h2 class="section-title">Project Information</h2>
-    <div class="intro">
-        <h3>Water Pollution Awareness Project</h3>
-        <p>Study Area: Stonehousepet, Nellore, Andhra Pradesh</p>
-        <p>Student Name: Kapuluru Geethika</p>
-        <p>Project Topic: Water Pollution</p>
-        <p>Replace or verify the student and college details before submitting your project.</p>
+    <div class="student">
+        <p><b>Project Title:</b> Promoting Clean Water and Environmental Awareness in Society</p>
+        <p><b>Student Name:</b> KAPULURU GEETHIKA</p>
+        <p><b>Branch:</b> CSE-E</p>
+        <p><b>College:</b> SREE VENKATESWARA COLLEGE OF ENGINEERING NELLORE</p>
+        <p><b>Project Location:</b> NELLORE</p>
+        <p><b>Project Type:</b> Community Service Project</p>
     </div>
 </section>
 
 <footer>
-    <p>💧 Save Water, Save Earth, Save Life</p>
-    <p>Water Pollution Awareness Project | Stonehousepet, Nellore</p>
-    <p>© 2026 All Rights Reserved</p>
+    <h2>💧 Every Drop Matters</h2>
+    <p>Promoting Clean Water and Environmental Awareness in Society</p>
+    <p>Community Service Project | CSE</p>
+    <p>Protect Water Today for a Better Tomorrow.</p>
 </footer>
-
-<script>
-function toggleMenu() {
-    document.getElementById("navbar").classList.toggle("active");
-}
-
-// Close mobile menu after clicking a navigation link
-document.querySelectorAll("#navbar a").forEach(function(link) {
-    link.addEventListener("click", function() {
-        document.getElementById("navbar").classList.remove("active");
-    });
-});
-
-// Demo survey: displays a message but does not save responses to a database
-document.getElementById("surveyForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-
-    document.getElementById("surveyMessage").textContent =
-        "Thank you, " + name + "! Your survey response has been recorded on this page.";
-
-    this.reset();
-});
-</script>
 
 </body>
 </html>
