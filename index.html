@@ -3,525 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Clean Water | Community Service Project</title>
-
+<title>Clean Water Awareness</title>
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f4faff;
-    color: #18364a;
-    line-height: 1.7;
-}
-
-header {
-    background: #063b59;
-    color: white;
-    padding: 17px 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.logo {
-    font-size: 23px;
-    font-weight: bold;
-}
-
-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: #56d9f4;
-}
-
-.hero {
-    min-height: 490px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 70px 8%;
-    background:
-    linear-gradient(rgba(0,35,65,.65),rgba(0,35,65,.65)),
-    url("https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=1600")
-    center/cover;
-}
-
-.hero-content {
-    max-width: 850px;
-}
-
-.hero h1 {
-    font-size: 45px;
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 19px;
-}
-
-.btn {
-    display: inline-block;
-    background: #00a9d6;
-    color: white;
-    text-decoration: none;
-    padding: 12px 28px;
-    border-radius: 5px;
-    margin-top: 25px;
-    font-weight: bold;
-}
-
-.btn:hover {
-    background: #007ba8;
-}
-
-section {
-    padding: 65px 8%;
-}
-
-.section-title {
-    text-align: center;
-    color: #00658d;
-    font-size: 31px;
-    margin-bottom: 15px;
-}
-
-.section-intro {
-    text-align: center;
-    max-width: 850px;
-    margin: 0 auto 35px;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 25px;
-}
-
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.07);
-    transition: .3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card h3 {
-    color: #007ba8;
-    margin-bottom: 12px;
-}
-
-.card-image {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.light {
-    background: #e7f6fc;
-}
-
-.about-layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-    align-items: center;
-    gap: 35px;
-}
-
-.about-layout img {
-    width: 100%;
-    border-radius: 12px;
-}
-
-ul {
-    padding-left: 23px;
-}
-
-li {
-    margin-bottom: 10px;
-}
-
-.timeline {
-    max-width: 850px;
-    margin: auto;
-}
-
-.week {
-    background: white;
-    padding: 18px 22px;
-    margin: 15px 0;
-    border-left: 5px solid #00a9d6;
-    border-radius: 7px;
-    box-shadow: 0 3px 10px #0000000d;
-}
-
-.week h3 {
-    color: #00658d;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 20px;
-}
-
-.gallery img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.student {
-    max-width: 650px;
-    margin: auto;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 3px 15px #00000010;
-}
-
-.student p {
-    padding: 8px 0;
-    border-bottom: 1px solid #e8edf0;
-}
-
-footer {
-    background: #063b59;
-    color: white;
-    text-align: center;
-    padding: 35px 15px;
-}
-
-footer a {
-    color: #70e0fa;
-}
-
-@media(max-width:700px) {
-    header {
-        justify-content: center;
-        gap: 15px;
-    }
-
-    nav {
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .hero h1 {
-        font-size: 32px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;color:#173b4d;background:#f5fbfd;line-height:1.7}
+header{background:#075879;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center}
+header h2{font-size:22px}
+.menu-btn{background:#00a4c7;color:white;border:0;padding:11px 20px;border-radius:6px;font-size:16px;cursor:pointer}
+nav{display:none;background:#06435e;padding:15px 6%}
+nav.open{display:flex;flex-wrap:wrap;gap:22px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+nav a:hover{color:#7deaff}
+.hero{min-height:430px;padding:100px 8%;text-align:center;color:white;background:linear-gradient(#003b5ca8,#003b5ca8),url('https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=1500') center/cover}
+.hero h1{font-size:40px;margin-bottom:15px}
+.hero p{font-size:19px;max-width:750px;margin:auto}
+section{padding:60px 8%}
+h2.title{text-align:center;color:#006b91;margin-bottom:28px;font-size:30px}
+.intro{max-width:850px;margin:auto;text-align:center}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:white;padding:23px;border-radius:12px;box-shadow:0 3px 12px #00000012}
+.card h3{color:#007ca2;margin-bottom:10px}
+.blue{background:#e4f5fa}
+.week{background:white;margin:15px 0;padding:20px;border-left:5px solid #00a4c7;border-radius:8px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.gallery img{width:100%;height:190px;object-fit:cover;border-radius:10px}
+.student{max-width:650px;margin:auto;background:white;padding:25px;border-radius:10px}
+.student p{padding:9px;border-bottom:1px solid #ddd}
+footer{background:#06435e;color:white;text-align:center;padding:25px}
 </style>
 </head>
-
 <body>
 
 <header>
-    <div class="logo">💧 CLEAN WATER</div>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#causes">Causes</a>
-        <a href="#prevention">Solutions</a>
-        <a href="#activities">Activities</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<h2>💧 Clean Water Project</h2>
+<button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
 </header>
 
+<nav id="menu">
+<a href="#home" onclick="closeMenu()">Home</a>
+<a href="#community" onclick="closeMenu()">Community</a>
+<a href="#weeks" onclick="closeMenu()">Six Weeks</a>
+<a href="#findings" onclick="closeMenu()">Findings</a>
+<a href="#gallery" onclick="closeMenu()">Gallery</a>
+<a href="#about" onclick="closeMenu()">About Us</a>
+</nav>
+
 <div class="hero" id="home">
-    <div class="hero-content">
-        <h1>"SAVE WATER,SAVE LIFE"</h1>
-        <p>
-            A Community Service Project focused on understanding
-            water pollution and encouraging people to protect
-            our valuable water resources.
-        </p>
-        <a href="#about" class="btn">Explore Our Project</a>
-    </div>
+<h1>Promoting Clean Water and Environmental Awareness in Society</h1>
+<p>A Community Service Project focused on water conservation, pollution prevention and community awareness.</p>
 </div>
 
+<section id="community">
+<h2 class="title">About Our Community</h2>
+<p class="intro">Our project focuses on understanding water pollution problems in the community, collecting local information and creating awareness about protecting water resources. Community participation is important for maintaining clean and safe water.</p>
+</section>
+
+<section class="blue" id="weeks">
+<h2 class="title">Six Weeks of Project Activities</h2>
+<div class="week"><h3>Week 1 – Planning</h3><p>Project planning, area selection and questionnaire preparation.</p></div>
+<div class="week"><h3>Week 2 – Community Survey</h3><p>Household visits, survey questions and data collection.</p></div>
+<div class="week"><h3>Week 3 – Awareness</h3><p>Creating awareness about water pollution and clean water.</p></div>
+<div class="week"><h3>Week 4 – Detailed Survey</h3><p>Observing local water-related concerns and recording responses.</p></div>
+<div class="week"><h3>Week 5 – Community Activities</h3><p>Documenting awareness activities and community participation.</p></div>
+<div class="week"><h3>Week 6 – Assessment</h3><p>Reviewing observations, feedback and project outcomes.</p></div>
+</section>
+
+<section id="findings">
+<h2 class="title">Findings and Solutions</h2>
+<div class="cards">
+<div class="card"><h3>Water Pollution</h3><p>Waste disposal and untreated wastewater can affect local water quality.</p></div>
+<div class="card"><h3>Public Awareness</h3><p>Community education can encourage responsible water use.</p></div>
+<div class="card"><h3>Clean Water</h3><p>Proper waste management and water protection help maintain a healthy environment.</p></div>
+</div>
+<h2 class="title" style="margin-top:35px">Suggested Actions</h2>
+<div class="intro">
+<p>• Avoid throwing waste into water bodies.</p>
+<p>• Keep surroundings and water sources clean.</p>
+<p>• Promote safe water practices.</p>
+<p>• Encourage community participation.</p>
+</div>
+</section>
+
+<section class="blue" id="gallery">
+<h2 class="title">Project Gallery</h2>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=700" alt="Clean water">
+<img src="https://images.unsplash.com/photo-1530053969600-caed2596d242?w=700" alt="Water environment">
+<img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=700" alt="Ocean water">
+<img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=700" alt="Nature">
+</div>
+</section>
+
 <section id="about">
-    <h2 class="section-title">About Our Project</h2>
-    <p class="section-intro">
-        Water is one of the most important natural resources.
-        Water pollution occurs when harmful substances enter
-        rivers, lakes, ponds and other water sources.
-        Our project aims to create awareness about clean water,
-        environmental protection and community participation.
-    </p>
-
-    <div class="about-layout">
-        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900"
-        alt="Natural water environment">
-
-        <div>
-            <h3>Our Main Objectives</h3>
-            <ul>
-                <li>Understand the causes of water pollution.</li>
-                <li>Study its effects on people and nature.</li>
-                <li>Understand community awareness about clean water.</li>
-                <li>Encourage responsible waste disposal.</li>
-                <li>Promote water conservation practices.</li>
-                <li>Encourage community participation.</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section class="light" id="causes">
-    <h2 class="section-title">Causes of Water Pollution</h2>
-    <p class="section-intro">
-        Several human activities contribute to the pollution
-        of water resources.
-    </p>
-
-    <div class="cards">
-        <div class="card">
-            <h3>🏭 Industrial Waste</h3>
-            <p>Untreated industrial wastewater can introduce
-            harmful substances into water sources.</p>
-        </div>
-
-        <div class="card">
-            <h3>🗑️ Plastic Waste</h3>
-            <p>Plastic bags, bottles and garbage can contaminate
-            rivers, lakes and ponds.</p>
-        </div>
-
-        <div class="card">
-            <h3>🚰 Domestic Sewage</h3>
-            <p>Improper disposal of household wastewater
-            can reduce water quality.</p>
-        </div>
-
-        <div class="card">
-            <h3>🌾 Agricultural Chemicals</h3>
-            <p>Fertilizers and pesticides can enter water
-            bodies through surface runoff.</p>
-        </div>
-    </div>
-</section>
-
-<section id="effects">
-    <h2 class="section-title">Effects of Water Pollution</h2>
-    <div class="cards">
-        <div class="card">
-            <img class="card-image"
-            src="https://images.unsplash.com/photo-1530053969600-caed2596d242?w=700"
-            alt="Water environment">
-            <h3>Human Health</h3>
-            <p>Unsafe water can spread waterborne diseases
-            and create health problems.</p>
-        </div>
-
-        <div class="card">
-            <img class="card-image"
-            src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=700"
-            alt="Aquatic life">
-            <h3>Aquatic Life</h3>
-            <p>Pollution can damage aquatic habitats and
-            affect fish and other organisms.</p>
-        </div>
-
-        <div class="card">
-            <img class="card-image"
-            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=700"
-            alt="Natural landscape">
-            <h3>Environment</h3>
-            <p>Pollution affects ecosystems and reduces
-            the quality of natural water resources.</p>
-        </div>
-    </div>
-</section>
-
-<section class="light" id="prevention">
-    <h2 class="section-title">Prevention and Solutions</h2>
-    <p class="section-intro">
-        Everyone has a role in protecting water resources.
-        Small responsible actions can make a difference.
-    </p>
-
-    <div class="cards">
-        <div class="card">
-            <h3>Keep Water Sources Clean</h3>
-            <p>Do not throw plastic, garbage or other waste
-            into rivers and ponds.</p>
-        </div>
-
-        <div class="card">
-            <h3>Treat Wastewater</h3>
-            <p>Ensure wastewater is treated properly before
-            it is released into water bodies.</p>
-        </div>
-
-        <div class="card">
-            <h3>Save Water</h3>
-            <p>Avoid unnecessary water wastage and
-            encourage conservation.</p>
-        </div>
-
-        <div class="card">
-            <h3>Create Awareness</h3>
-            <p>Share information about water pollution
-            and environmental protection.</p>
-        </div>
-    </div>
-</section>
-
-<section id="activities">
-    <h2 class="section-title">Project Activities</h2>
-    <p class="section-intro">
-        The following sections provide a structure for documenting
-        the eight-week Community Service Project.
-    </p>
-
-    <div class="timeline">
-        <div class="week">
-            <h3>Week 1 – Planning and Questionnaire Design</h3>
-            <p>Project planning, community selection and preparation
-            of survey questions.</p>
-        </div>
-
-        <div class="week">
-            <h3>Week 2 – Community Survey</h3>
-            <p>Document the socio-economic survey and
-            water-related information collected.</p>
-        </div>
-
-        <div class="week">
-            <h3>Week 3 – Awareness Campaign</h3>
-            <p>Document awareness activities and educational
-            information shared with the community.</p>
-        </div>
-
-        <div class="week">
-            <h3>Week 4 – Deep-Dive Survey</h3>
-            <p>Record observations and identify water pollution
-            concerns in the selected area.</p>
-        </div>
-
-        <div class="week">
-            <h3>Week 5 – Community Intervention</h3>
-            <p>Document the project implementation and
-            community participation.</p>
-        </div>
-
-        <div class="week">
-            <h3>Week 6 – Impact Assessment</h3>
-            <p>Record follow-up observations and feedback.</p>
-        </div>
-
-        <div class="week">
-            <h3>Week 7 – Report Preparation</h3>
-            <p>Organize collected information, photographs
-            and project findings.</p>
-        </div>
-
-        <div class="week">
-            <h3>Week 8 – Final Documentation</h3>
-            <p>Prepare and submit the final Community
-            Service Project report.</p>
-        </div>
-    </div>
-</section>
-
-<section class="light" id="survey">
-    <h2 class="section-title">Community Survey</h2>
-    <p class="section-intro">
-        Use these questions to understand community awareness
-        about water pollution.
-    </p>
-
-    <div class="card">
-        <ol>
-            <li>Are you aware of the causes of water pollution?</li>
-            <li>What is your main source of drinking water?</li>
-            <li>Do you know the importance of safe drinking water?</li>
-            <li>How do you dispose of household waste?</li>
-            <li>What steps can improve water cleanliness in your area?</li>
-            <li>Would you participate in water conservation activities?</li>
-        </ol>
-    </div>
-    <p style="text-align:center;margin-top:20px">
-        <b>Note:</b> Add actual survey results after collecting
-        responses from community members.
-    </p>
-</section>
-
-<section id="gallery">
-    <h2 class="section-title">Project Gallery</h2>
-    <p class="section-intro">
-        Add your original photographs of community surveys,
-        awareness activities and project work here.
-    </p>
-
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=700"
-        alt="Clean water">
-
-        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=700"
-        alt="Natural water source">
-
-        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=700"
-        alt="Ocean and water">
-
-        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=700"
-        alt="Environment">
-    </div>
-</section>
-
-<section class="light" id="contact">
-    <h2 class="section-title">About the Student</h2>
-
-    <div class="student">
-        <p><b>Project Title:</b> Promoting Clean Water and Environmental Awareness in Society</p>
-        <p><b>Student Name:</b> KAPULURU GEETHIKA</p>
-        <p><b>Branch:</b> CSE-E</p>
-        <p><b>College:</b> SREE VENKATESWARA COLLEGE OF ENGINEERING NELLORE</p>
-        <p><b>Project Location:</b> NELLORE</p>
-        <p><b>Project Type:</b> Community Service Project</p>
-    </div>
+<h2 class="title">About Us</h2>
+<div class="student">
+<p><b>Student Name:</b> KAPULURU GEETHIKA</p>
+<p><b>Branch:</b> CSE-E</p>
+<p><b>College:</b> SREE VENKATESWARA COLLEGE OF ENGINNEERING NELLORE</p>
+<p><b>Project Location:</b> NELLORE</p>
+<p><b>Project:</b> Community Service Project</p>
+</div>
 </section>
 
 <footer>
-    <h2>💧 Every Drop Matters</h2>
-    <p>Promoting Clean Water and Environmental Awareness in Society</p>
-    <p>Community Service Project | CSE</p>
-    <p>Protect Water Today for a Better Tomorrow.</p>
+<p>Community Service Project | CSE</p>
+<p>Promoting Clean Water and Environmental Awareness in Society</p>
 </footer>
 
+<script>
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("open");
+}
+function closeMenu(){
+document.getElementById("menu").classList.remove("open");
+}
+</script>
 </body>
 </html>
