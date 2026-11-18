@@ -1,0 +1,47 @@
+import sqlite3
+
+DB_NAME = "database.db"
+
+def create_database():
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS feedback (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT,
+            message TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+
+    conn.commit()
+    conn.close()
+
+    print("Database created successfully!")
+
+def save_feedback(name, email, message):
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO feedback (name, email, message)
+        VALUES (?, ?, ?)
+    """, (name, email, message))
+
+    conn.commit()
+    conn.close()
+
+def get_feedback():
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM feedback ORDER BY id DESC")
+    data = cursor.fetchall()
+
+    conn.close()
+    return data
+
+if __name__ == "__main__":
+    create_database()
