@@ -3,43 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback</title>
+    <title>Feedback | Clean Water Mission</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
     <h2>💧 Clean Water Mission</h2>
-    <nav>
+    <nav aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="causes.html">Causes</a>
         <a href="effects.html">Effects</a>
         <a href="solutions.html">Solutions</a>
         <a href="awareness.html">Awareness</a>
-        <a href="feedback.html">Feedback</a>
+        <a href="feedback.html" aria-current="page">Feedback</a>
     </nav>
 </header>
 
-<section class="content">
+<main class="content">
     <h1>Share Your Feedback</h1>
     <p>Your suggestions help us improve environmental awareness.</p>
 
     <form id="feedbackForm">
-        <label>Your Name</label>
-        <input type="text" id="name" placeholder="Enter your name" required>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" maxlength="100" autocomplete="name" required>
 
-        <label>Email Address</label>
-        <input type="email" id="email" placeholder="Enter your email" required>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" maxlength="254" autocomplete="email" required>
 
-        <label>Your Feedback</label>
-        <textarea id="message" placeholder="Write your suggestions..." required></textarea>
+        <label for="message">Your Feedback</label>
+        <textarea id="message" name="message" placeholder="Write your suggestions..." maxlength="5000" required></textarea>
 
         <button type="submit" class="btn">Submit Feedback</button>
     </form>
 
-    <p id="response"></p>
-</section>
+    <p id="response" class="form-response" role="status" aria-live="polite"></p>
+</main>
 
 <footer>© 2026 Water Pollution Awareness Project</footer>
+<script src="api-config.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
