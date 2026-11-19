@@ -166,3 +166,73 @@ textarea:focus-visible {
   outline: 3px solid #1779bd;
   outline-offset: 2px;
 }
+/* COMPACT AND NEAT WEBSITE DESIGN */
+
+.page {
+    max-width: 850px;
+    padding: 22px 18px;
+}
+
+.hero {
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.tagline {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.intro {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Smaller information cards */
+.card,
+.feature-card,
+.info-card,
+.lesson-card {
+    padding: 16px 20px;
+    margin: 12px 0;
+    border-radius: 18px;
+}
+
+/* Smaller headings and descriptions */
+h2 {
+    font-size: 1.25rem;
+}
+
+p, li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.lessons h2 {
+    margin-bottom: 8px;
+}
+
+.lessons h2:not(:first-child) {
+    margin-top: 18px;
+}
+
+.lessons li {
+    margin-bottom: 5px;
+}
+
+@media (max-width: 600px) {
+    .page {
+        padding: 16px 12px;
+    }
+
+    .card,
+    .feature-card,
+    .info-card,
+    .lesson-card {
+        padding: 14px;
+    }
+}
