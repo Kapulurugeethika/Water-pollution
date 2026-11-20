@@ -1,172 +1,312 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp,
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+/* =================================
+   FIREBASE CONFIGURATION
+================================= */
 
-/* ------------------------------------------------------------------
-   STEP 1: Paste your Firebase web app config here.
-   Firebase console > Project settings > Your apps > Web app > Config
-------------------------------------------------------------------- */
+// Replace these values with your Firebase project details.
+
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
+    apiKey: "YOUR_FIREBASE_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    appId: "YOUR_FIREBASE_APP_ID"
 };
 
-const configMissing = firebaseConfig.apiKey.startsWith("YOUR_");
+firebase.initializeApp(firebaseConfig);
 
-let auth = null;
-let db = null;
-if (!configMissing) {
-  const app = initializeApp(firebaseConfig);
-  auth = getAuth(app);
-  db = getFirestore(app);
-}
+const auth = firebase.auth();
 
-// Elements
-const authView = document.getElementById("auth-view");
-const appView = document.getElementById("app-view");
-const tabLogin = document.getElementById("tab-login");
-const tabSignup = document.getElementById("tab-signup");
-const form = document.getElementById("auth-form");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const submitBtn = document.getElementById("submit-btn");
-const message = document.getElementById("message");
-const userEmail = document.getElementById("user-email");
-const logoutBtn = document.getElementById("logout-btn");
 
-let mode = "login";
+/* =================================
+   EMAILJS CONFIGURATION
+================================= */
 
-function showMessage(text, ok = false) {
-  message.textContent = text;
-  message.classList.toggle("ok", ok);
-  message.hidden = false;
-}
+const EMAILJS_PUBLIC_KEY = "YOUR_EMAILJS_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID";
 
-function clearMessage() {
-  message.hidden = true;
-  message.textContent = "";
-}
-
-function setMode(next) {
-  mode = next;
-  const isLogin = next === "login";
-  tabLogin.classList.toggle("active", isLogin);
-  tabSignup.classList.toggle("active", !isLogin);
-  tabLogin.setAttribute("aria-selected", isLogin);
-  tabSignup.setAttribute("aria-selected", !isLogin);
-  submitBtn.textContent = isLogin ? "Log in" : "Create account";
-  passwordInput.autocomplete = isLogin ? "current-password" : "new-password";
-  clearMessage();
-  if (configMissing) showSetupMessage();
-}
-
-function showSetupMessage() {
-  showMessage("Setup needed: add your Firebase config in script.js (see the setup guide).");
-}
-
-function friendlyError(code) {
-  switch (code) {
-    case "auth/invalid-email": return "That email address doesn't look right.";
-    case "auth/missing-password": return "Enter a password.";
-    case "auth/weak-password": return "Use a password with at least 6 characters.";
-    case "auth/email-already-in-use": return "An account with this email already exists. Try logging in.";
-    case "auth/invalid-credential":
-    case "auth/user-not-found":
-    case "auth/wrong-password": return "Email or password is incorrect.";
-    case "auth/too-many-requests": return "Too many attempts. Wait a few minutes and try again.";
-    case "auth/network-request-failed": return "No connection. Check your internet and try again.";
-    default: return "Something went wrong. Please try again.";
-  }
-}
-
-tabLogin.addEventListener("click", () => setMode("login"));
-tabSignup.addEventListener("click", () => setMode("signup"));
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  if (configMissing) return showSetupMessage();
-
-  clearMessage();
-  submitBtn.disabled = true;
-  const email = emailInput.value.trim();
-  const password = passwordInput.value;
-
-  try {
-    if (mode === "login") {
-      await signInWithEmailAndPassword(auth, email, password);
-    } else {
-      await createUserWithEmailAndPassword(auth, email, password);
-    }
-    form.reset();
-  } catch (err) {
-    showMessage(friendlyError(err.code));
-  } finally {
-    submitBtn.disabled = false;
-  }
+emailjs.init({
+    publicKey: EMAILJS_PUBLIC_KEY
 });
 
-logoutBtn.addEventListener("click", () => auth && signOut(auth));
 
-if (configMissing) {
-  showSetupMessage();
-} else {
-  onAuthStateChanged(auth, (user) => {
-    const loggedIn = Boolean(user);
-    authView.hidden = loggedIn;
-    appView.hidden = !loggedIn;
-    userEmail.textContent = loggedIn ? user.email : "";
-    window.scrollTo(0, 0);
-  });
+/* =================================
+   PAGE ELEMENTS
+================================= */
+
+const authPage = document.getElementById("authPage");
+const mainWebsite = document.getElementById("mainWebsite");
+
+const loginForm = document.getElementById("loginForm");
+const signupForm = document.getElementById("signupForm");
+
+const authMessage = document.getElementById("authMessage");
+
+
+/* =================================
+   LOGIN / SIGNUP SWITCH
+================================= */
+
+function showLogin() {
+
+    loginForm.classList.remove("hidden");
+    signupForm.classList.add("hidden");
+
+    authMessage.textContent = "";
 }
 
-/* ---------------- Feedback (saved in Firestore) ---------------- */
-const fbForm = document.getElementById("feedback-form");
-const fbRating = document.getElementById("fb-rating");
-const fbText = document.getElementById("fb-text");
-const fbSubmit = document.getElementById("fb-submit");
-const fbMessage = document.getElementById("fb-message");
+function showSignup() {
 
-function showFb(text, ok) {
-  fbMessage.textContent = text;
-  fbMessage.classList.toggle("ok", ok);
-  fbMessage.hidden = false;
+    signupForm.classList.remove("hidden");
+    loginForm.classList.add("hidden");
+
+    authMessage.textContent = "";
 }
 
-fbForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const text = fbText.value.trim();
-  if (!auth || !auth.currentUser) return showFb("Log in to send feedback.", false);
-  if (text.length < 3) return showFb("Write a short message before sending.", false);
 
-  fbSubmit.disabled = true;
-  try {
-    await addDoc(collection(db, "feedback"), {
-      uid: auth.currentUser.uid,
-      email: auth.currentUser.email,
-      rating: Number(fbRating.value),
-      message: text,
-      createdAt: serverTimestamp(),
-    });
-    fbForm.reset();
-    showFb("Thank you! Your feedback was sent.", true);
-  } catch (err) {
-    showFb("Could not send feedback. Check your connection and try again.", false);
-  } finally {
-    fbSubmit.disabled = false;
-  }
+/* =================================
+   LOGIN
+================================= */
+
+loginForm.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    authMessage.textContent = "Logging in...";
+
+    try {
+
+        await auth.signInWithEmailAndPassword(email, password);
+
+        authMessage.textContent = "Login successful!";
+
+    } catch(error) {
+
+        authMessage.textContent = getAuthError(error.code);
+
+    }
+
+});
+
+
+/* =================================
+   SIGNUP
+================================= */
+
+signupForm.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const name = document.getElementById("fullName").value.trim();
+
+    const email = document.getElementById("signupEmail").value.trim();
+
+    const password = document.getElementById("signupPassword").value;
+
+    const confirm = document.getElementById("confirmPassword").value;
+
+    if(name.length < 2) {
+
+        authMessage.textContent = "Please enter your full name.";
+
+        return;
+    }
+
+    if(password !== confirm) {
+
+        authMessage.textContent = "Passwords do not match.";
+
+        return;
+    }
+
+    if(password.length < 6) {
+
+        authMessage.textContent = "Password must contain at least 6 characters.";
+
+        return;
+    }
+
+    authMessage.textContent = "Creating account...";
+
+    try {
+
+        const result = await auth.createUserWithEmailAndPassword(
+            email,
+            password
+        );
+
+        await result.user.updateProfile({
+            displayName: name
+        });
+
+        await result.user.reload();
+
+        authMessage.textContent = "Account created successfully!";
+
+    } catch(error) {
+
+        authMessage.textContent = getAuthError(error.code);
+
+    }
+
+});
+
+
+/* =================================
+   AUTHENTICATION STATE
+================================= */
+
+auth.onAuthStateChanged(function(user) {
+
+    if(user) {
+
+        authPage.classList.add("hidden");
+
+        mainWebsite.classList.remove("hidden");
+
+    } else {
+
+        mainWebsite.classList.add("hidden");
+
+        authPage.classList.remove("hidden");
+
+    }
+
+});
+
+
+/* =================================
+   ERROR HANDLING
+================================= */
+
+function getAuthError(code) {
+
+    const errors = {
+
+        "auth/email-already-in-use":
+        "This email is already registered.",
+
+        "auth/invalid-email":
+        "Please enter a valid email address.",
+
+        "auth/weak-password":
+        "Please choose a stronger password.",
+
+        "auth/user-not-found":
+        "No account found with this email.",
+
+        "auth/wrong-password":
+        "Incorrect email or password.",
+
+        "auth/invalid-credential":
+        "Incorrect email or password.",
+
+        "auth/too-many-requests":
+        "Too many attempts. Please try again later.",
+
+        "auth/network-request-failed":
+        "Network error. Check your internet connection."
+
+    };
+
+    return errors[code] || "Something went wrong. Please try again.";
+}
+
+
+/* =================================
+   LOGOUT
+================================= */
+
+async function logout() {
+
+    try {
+
+        await auth.signOut();
+
+        loginForm.reset();
+        signupForm.reset();
+
+        authMessage.textContent = "";
+
+    } catch(error) {
+
+        alert("Unable to logout. Please try again.");
+
+    }
+
+}
+
+
+/* =================================
+   EMAILJS FEEDBACK
+================================= */
+
+const feedbackForm = document.getElementById("feedbackForm");
+
+feedbackForm.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const user = auth.currentUser;
+
+    if(!user) {
+
+        alert("Please login first.");
+
+        return;
+    }
+
+    const name = document.getElementById("feedbackName").value.trim();
+
+    const email = document.getElementById("feedbackEmail").value.trim();
+
+    const rating = document.getElementById("rating").value;
+
+    const message = document.getElementById("feedbackMessage").value.trim();
+
+    const status = document.getElementById("feedbackStatus");
+
+    if(!name || !email || !rating || !message) {
+
+        status.textContent = "Please fill all fields.";
+
+        return;
+    }
+
+    const button = feedbackForm.querySelector("button");
+
+    button.disabled = true;
+    status.textContent = "Sending feedback...";
+
+    try {
+
+        await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            {
+                user_name: name,
+                user_email: email,
+                rating: rating,
+                feedback_message: message
+            }
+        );
+
+        status.textContent = "Thank you! Your feedback was sent successfully.";
+
+        feedbackForm.reset();
+
+    } catch(error) {
+
+        console.error("EmailJS error:", error);
+
+        status.textContent = "Unable to send feedback. Please try again.";
+
+    } finally {
+
+        button.disabled = false;
+
+    }
+
 });
