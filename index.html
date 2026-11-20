@@ -4,63 +4,362 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Water Pollution Awareness</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
+
 <body>
 
+<!-- LOGIN / SIGNUP -->
+
+<div id="authPage" class="auth-container">
+
+    <div class="auth-box">
+
+        <h1>💧 Water Awareness</h1>
+        <p>Save Water, Save Life.</p>
+
+        <div class="auth-buttons">
+            <button onclick="showLogin()">Login</button>
+            <button onclick="showSignup()">Signup</button>
+        </div>
+
+        <form id="loginForm">
+
+            <h2>Welcome Back!</h2>
+
+            <input type="email" id="loginEmail"
+            placeholder="Email Address" required>
+
+            <input type="password" id="loginPassword"
+            placeholder="Password" required>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <form id="signupForm" class="hidden">
+
+            <h2>Create Account</h2>
+
+            <input type="text" id="fullName"
+            placeholder="Full Name" required>
+
+            <input type="email" id="signupEmail"
+            placeholder="Email Address" required>
+
+            <input type="password" id="signupPassword"
+            placeholder="Password (minimum 6 characters)"
+            minlength="6" required>
+
+            <input type="password" id="confirmPassword"
+            placeholder="Confirm Password" required>
+
+            <button type="submit">Create Account</button>
+
+        </form>
+
+        <p id="authMessage"></p>
+
+    </div>
+</div>
+
+
+<!-- MAIN WEBSITE -->
+
+<div id="mainWebsite" class="hidden">
+
 <header>
-    <h2>💧 Clean Water Mission</h2>
+
+    <h1>💧 WATER POLLUTION AWARENESS</h1>
+
+    <p>Save Water, Save Life.</p>
+
     <nav>
-        <a href="index.html">Home</a>
-        <a href="causes.html">Causes</a>
-        <a href="effects.html">Effects</a>
-        <a href="solutions.html">Solutions</a>
-        <a href="awareness.html">Awareness</a>
-        <a href="feedback.html">Feedback</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#causes">Causes</a>
+        <a href="#types">Types</a>
+        <a href="#effects">Effects</a>
+        <a href="#prevention">Prevention</a>
+        <a href="#message">Our Message</a>
+        <a href="#feedback">Feedback</a>
+
+        <button onclick="logout()">Logout</button>
     </nav>
+
 </header>
 
-<section class="hero">
-    <h1>Save Water, Save Life</h1>
-    <p>Promoting Clean Water and Environmental Awareness in Society</p>
-    <a class="btn" href="causes.html">Explore More</a>
+
+<!-- HOME -->
+
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <h2>Protect Our Water Resources</h2>
+
+        <p>
+        Water is one of the most valuable natural resources
+        on Earth. Clean water is essential for humans,
+        animals and plants. Let us work together to
+        prevent water pollution.
+        </p>
+
+        <a href="#about" class="btn">Explore More</a>
+
+    </div>
+
 </section>
 
-<section class="content">
-    <h2>Welcome to Our Project</h2>
+
+<!-- ABOUT -->
+
+<section id="about" class="section">
+
+    <h2>About Water Pollution</h2>
+
+    <img src="https://images.unsplash.com/photo-1530053969600-caed2596d242?w=1000"
+    alt="Water resource">
+
     <p>
-        Water is one of the most important natural resources
-        for all living organisms. Water pollution occurs when
-        harmful substances enter rivers, lakes and other
-        water resources.
+    Water pollution is the contamination of rivers, lakes,
+    oceans and groundwater by harmful substances.
+    These substances include chemicals, plastics,
+    sewage and industrial waste.
+
+    Water pollution reduces water quality and makes
+    it unsafe for drinking, agriculture and aquatic life.
+
+    Protecting water resources is essential for a healthy
+    environment and sustainable future.
     </p>
-    <p>
-        This website explains the causes, effects and
-        prevention methods of water pollution. Our aim is
-        to create awareness and encourage people to protect
-        clean water resources.
-    </p>
+
 </section>
 
-<section class="cards">
-    <div class="card">
-        <h3>🌊 Clean Water</h3>
-        <p>Clean water is essential for healthy living.</p>
+
+<!-- CAUSES -->
+
+<section id="causes" class="section">
+
+    <h2>Causes of Water Pollution</h2>
+
+    <div class="card-container">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=600">
+            <h3>Industrial Waste</h3>
+            <p>Factories release harmful chemicals and untreated wastewater into water bodies.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1605600659873-d808a13e4d9a?w=600">
+            <h3>Plastic Waste</h3>
+            <p>Plastic materials pollute rivers and oceans and threaten aquatic animals.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600">
+            <h3>Sewage Water</h3>
+            <p>Untreated sewage introduces harmful microorganisms into water resources.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600">
+            <h3>Agricultural Chemicals</h3>
+            <p>Fertilizers and pesticides can enter rivers and lakes through agricultural runoff.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600">
+            <h3>Oil Spills</h3>
+            <p>Oil pollution damages marine ecosystems and affects aquatic organisms.</p>
+        </div>
+
     </div>
-    <div class="card">
-        <h3>🌱 Protect Nature</h3>
-        <p>Protect rivers, lakes and aquatic life.</p>
-    </div>
-    <div class="card">
-        <h3>💧 Save Water</h3>
-        <p>Use water carefully and avoid wastage.</p>
-    </div>
+
 </section>
+
+
+<!-- TYPES -->
+
+<section id="types" class="section">
+
+    <h2>Types of Water Pollution</h2>
+
+    <div class="card-container">
+
+        <div class="card">
+            <h3>Surface Water Pollution</h3>
+            <p>Contamination of rivers, lakes, ponds and streams.</p>
+        </div>
+
+        <div class="card">
+            <h3>Groundwater Pollution</h3>
+            <p>Pollution that enters underground water through soil.</p>
+        </div>
+
+        <div class="card">
+            <h3>Marine Pollution</h3>
+            <p>Contamination of oceans and seas by plastics, chemicals and oil.</p>
+        </div>
+
+        <div class="card">
+            <h3>Chemical Pollution</h3>
+            <p>Harmful chemical substances entering natural water resources.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EFFECTS -->
+
+<section id="effects" class="section">
+
+    <h2>Effects of Water Pollution</h2>
+
+    <div class="card-container">
+
+        <div class="card">
+            <h3>Human Health Problems</h3>
+            <p>Contaminated water can spread diseases and cause serious health problems.</p>
+        </div>
+
+        <div class="card">
+            <h3>Death of Aquatic Animals</h3>
+            <p>Polluted water affects fish and other aquatic organisms.</p>
+        </div>
+
+        <div class="card">
+            <h3>Environmental Damage</h3>
+            <p>Pollution disturbs aquatic ecosystems and reduces biodiversity.</p>
+        </div>
+
+        <div class="card">
+            <h3>Shortage of Clean Water</h3>
+            <p>Pollution reduces the availability of safe drinking water.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PREVENTION -->
+
+<section id="prevention" class="section">
+
+    <h2>Prevention of Water Pollution</h2>
+
+    <div class="card-container">
+
+        <div class="card">
+            <h3>🚯 Avoid Plastic</h3>
+            <p>Never throw plastic waste into rivers and lakes.</p>
+        </div>
+
+        <div class="card">
+            <h3>🏭 Treat Wastewater</h3>
+            <p>Industries should treat wastewater before releasing it.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌱 Reduce Chemicals</h3>
+            <p>Use fertilizers and pesticides responsibly.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌊 Keep Water Clean</h3>
+            <p>Participate in cleaning rivers, lakes and ponds.</p>
+        </div>
+
+        <div class="card">
+            <h3>📢 Spread Awareness</h3>
+            <p>Educate people about protecting water resources.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MESSAGE -->
+
+<section id="message" class="message">
+
+    <h2>Our Message</h2>
+
+    <h3>Save Water, Save Earth!</h3>
+
+    <h3>Protect Water, Protect Future!</h3>
+
+    <p>Every Drop Counts. Every Action Matters.</p>
+
+</section>
+
+
+<!-- FEEDBACK -->
+
+<section id="feedback" class="section">
+
+    <h2>Share Your Feedback</h2>
+
+    <p>We value your suggestions and opinions.</p>
+
+    <form id="feedbackForm" class="feedback-form">
+
+        <input type="text" id="feedbackName"
+        placeholder="User Name" required>
+
+        <input type="email" id="feedbackEmail"
+        placeholder="Email Address" required>
+
+        <label>Rate Our Website</label>
+
+        <select id="rating" required>
+            <option value="">Select Rating</option>
+            <option value="5 Stars">⭐⭐⭐⭐⭐ - Excellent</option>
+            <option value="4 Stars">⭐⭐⭐⭐ - Very Good</option>
+            <option value="3 Stars">⭐⭐⭐ - Good</option>
+            <option value="2 Stars">⭐⭐ - Average</option>
+            <option value="1 Star">⭐ - Poor</option>
+        </select>
+
+        <textarea id="feedbackMessage"
+        placeholder="Write your feedback..."
+        required></textarea>
+
+        <button type="submit">Submit Feedback</button>
+
+        <p id="feedbackStatus"></p>
+
+    </form>
+
+</section>
+
 
 <footer>
-    <p>© 2026 Water Pollution Awareness Project</p>
+
+    <h3>Water Pollution Awareness</h3>
+
+    <p>Community Service Project (CSP)</p>
+
+    <p>Save Water, Save Life.</p>
+
+    <p>© 2026 Water Pollution Awareness</p>
+
 </footer>
 
+</div>
+
 <script src="script.js"></script>
+
 </body>
 </html>
