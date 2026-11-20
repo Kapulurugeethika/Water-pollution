@@ -286,7 +286,14 @@ feedbackForm.addEventListener("submit", async function(e) {
 
     try {
 
-        await emailjs.send(
+    await db.collection("feedback").add({
+        name: name,
+        email: email,
+        message: message,
+        rating: Number(rating)
+    });
+
+    await emailjs.send(
             EMAILJS_SERVICE_ID,
             EMAILJS_TEMPLATE_ID,
             {
