@@ -4,11 +4,15 @@
 
 // Replace these values with your Firebase project details.
 
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "YOUR_FIREBASE_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    appId: "YOUR_FIREBASE_APP_ID"
+  apiKey: "AIzaSyC1MObspbNouwu8iT50HMppqemkyUW64Gw",
+  authDomain: "water-pollution-a35ca.firebaseapp.com",
+  projectId: "water-pollution-a35ca",
+  storageBucket: "water-pollution-a35ca.firebasestorage.app",
+  messagingSenderId: "295204696306",
+  appId: "1:295204696306:web:329e5056154aceb074606b",
+  measurementId: "G-G51QM7THKT"
 };
 
 firebase.initializeApp(firebaseConfig);
