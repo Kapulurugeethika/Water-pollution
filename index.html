@@ -1,269 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Water Pollution | Save Water, Save Life</title>
-  <meta name="description" content="Community Service Project: Promoting Clean Water And Environmental Awareness in society">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Pollution Awareness</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ================= AUTH VIEW (logged out) ================= -->
-<main id="authView" class="auth-view">
-  <div class="auth-hero">
-    <div class="drop" aria-hidden="true">💧</div>
-    <h1>Clean Water Mission</h1>
-    <p class="tagline">Save Water, Save Life.</p>
-    <p class="auth-copy">A community service project to help everyone understand promoting clean water and environmental awareness in society.</p>
-  </div>
+<!-- LOGIN AND SIGNUP -->
 
-  <div class="auth-card">
-    <div class="tabs" role="tablist">
-      <button class="tab active" id="tabLogin" role="tab" aria-selected="true" type="button">Login</button>
-      <button class="tab" id="tabSignup" role="tab" aria-selected="false" type="button">Sign up</button>
-    </div>
+<div class="auth-container" id="authContainer">
 
-    <div id="authMsg" class="msg" role="alert" aria-live="polite"></div>
+    <div class="auth-box">
+        <h1>Clean Water Mission</h1>
+        <p>"Save water, Save life"</p>
+      <p>Promoting Clean Water And Environmental Awareness in Society</p>
 
-    <form id="loginForm" novalidate>
-      <label for="loginEmail">Email address</label>
-      <input type="email" id="loginEmail" autocomplete="email" placeholder="you@example.com" required>
-      <label for="loginPassword">Password</label>
-      <input type="password" id="loginPassword" autocomplete="current-password" placeholder="Your password" required>
-      <button type="submit" class="btn" id="loginBtn">Log in</button>
-      <button type="button" class="link-btn" id="forgotBtn">Forgot password?</button>
-    </form>
-
-    <form id="signupForm" class="hidden" novalidate>
-      <label for="signName">Full name</label>
-      <input type="text" id="signName" autocomplete="name" placeholder="Your full name" required>
-      <label for="signEmail">Email address</label>
-      <input type="email" id="signEmail" autocomplete="email" placeholder="you@example.com" required>
-      <label for="signPassword">Password</label>
-      <input type="password" id="signPassword" autocomplete="new-password" placeholder="At least 6 characters" required>
-      <label for="signConfirm">Confirm password</label>
-      <input type="password" id="signConfirm" autocomplete="new-password" placeholder="Repeat your password" required>
-      <button type="submit" class="btn" id="signupBtn">Create account</button>
-    </form>
-  </div>
-</main>
-
-<!-- ================= APP VIEW (logged in) ================= -->
-<div id="appView" class="hidden">
-  <header class="navbar">
-    <a href="#home" class="brand">💧 Clean Water Mission</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" type="button">☰</button>
-    <nav id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#causes">Causes</a>
-      <a href="#types">Types</a>
-      <a href="#effects">Effects</a>
-      <a href="#prevention">Prevention</a>
-      <a href="#message">Our Message</a>
-      <a href="#feedback">Feedback</a>
-      <button class="btn btn-small" id="logoutBtn" type="button">Logout</button>
-    </nav>
-  </header>
-
-  <!-- HOME -->
-  <section id="home" class="hero">
-    <div class="hero-inner">
-      <p class="welcome" id="welcomeUser"></p>
-      <h1>Protect Our Water Resources</h1>
-      <p class="tagline">Save Water, Save Life.</p>
-      <p class="hero-copy">Water pollution happens when harmful substances such as waste, chemicals and plastic enter rivers, lakes, groundwater and oceans. It harms people, wildlife and the places we live. Explore each section below to learn how it happens and how we can stop it.</p>
-        <p>Water is one of the most valuable natural resources on Earth</p>
-        <a href="#about" class="btn btn-light">Start learning</a>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="container split">
-      <div>
-        <h2>About water pollution</h2>
-        <p>Water pollution is the contamination of water bodies such as rivers, lakes, ponds, groundwater and oceans by harmful materials. These materials include chemicals, sewage, plastic, oil and industrial waste.</p>
-        <p>Polluted water is unsafe to drink, harms fish and plants, and spoils the natural balance of the ecosystem. Because water moves, pollution released in one place can travel far, reaching farms, towns and the sea.</p>
-        <p>Less than 1% of the Earth's water is easily available as fresh water, so every drop we keep clean counts.</p>
-      </div>
-      <img class="pic" src="images/waste-on-river.jpg" alt="A polluted river with floating waste" loading="lazy">
-    </div>
-  </section>
-
-  <!-- CAUSES -->
-  <section id="causes" class="section alt">
-    <div class="container">
-      <h2>Causes of water pollution</h2>
-      <p class="lead">Most water pollution comes from human activity. These are the five main sources.</p>
-      <div class="grid">
-        <article class="card">
-          <img src="images/industrial-waste.jpg" alt="Factory releasing wastewater" loading="lazy">
-          <h3>Industrial waste</h3>
-          <p>Factories release chemicals, heavy metals and hot water into rivers when wastewater is not treated properly.</p>
-        </article>
-        <article class="card">
-          <img src="images/plastic-waste.jpg" alt="Plastic waste floating in water" loading="lazy">
-          <h3>Plastic waste</h3>
-          <p>Bottles and bags thrown into drains and rivers end up in the sea, where they break into tiny pieces that never fully disappear.</p>
-        </article>
-        <article class="card">
-          <img src="images/sewage-image.jpg" alt="Sewage drain flowing into water" loading="lazy">
-          <h3>Sewage water</h3>
-          <p>Untreated household waste carries germs and bacteria into water that people may later use for drinking and washing.</p>
-        </article>
-        <article class="card">
-          <img src="images/agricultural-chemicals.jpg" alt="Farm field sprayed with pesticides" loading="lazy">
-          <h3>Agricultural chemicals</h3>
-          <p>Fertilisers and pesticides wash off fields during rain and flow into streams, lakes and groundwater.</p>
-        </article>
-        <article class="card">
-          <img src="images/oil-spill.jpg" alt="Oil spill on the sea" loading="lazy">
-          <h3>Oil spills</h3>
-          <p>Oil from ships, pipelines and drilling floats on the surface, blocks sunlight and coats animals that live in or near water.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- TYPES -->
-  <section id="types" class="section">
-    <div class="container">
-      <h2>Types of water pollution</h2>
-      <p class="lead">Water pollution is grouped by where it happens and what causes it.</p>
-      <div class="grid">
-        <article class="card">
-          <img src="images/surface-water.jpg" alt="Polluted lake surface" loading="lazy">
-          <h3>Surface water pollution</h3>
-          <p>Affects rivers, lakes and ponds. It is the type we can most easily see, such as floating garbage, foam and dirty colour.</p>
-        </article>
-        <article class="card">
-          <img src="images/groundwater-pollution.jpg" alt="Well used to draw groundwater" loading="lazy">
-          <h3>Groundwater pollution</h3>
-          <p>Contaminants seep through soil into underground water. It is hard to detect and can take many years to clean.</p>
-        </article>
-        <article class="card">
-          <img src="images/marine-pollution.jpg" alt="Garbage washed up on a beach" loading="lazy">
-          <h3>Marine pollution</h3>
-          <p>Plastic, oil and waste reach the oceans and harm corals, fish, turtles and sea birds.</p>
-        </article>
-        <article class="card">
-          <img src="images/chemical-pollution.jpg" alt="Chemical discharge into water" loading="lazy">
-          <h3>Chemical pollution</h3>
-          <p>Toxic substances such as pesticides, heavy metals and industrial chemicals poison water and build up in living things.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- EFFECTS -->
-  <section id="effects" class="section alt">
-    <div class="container">
-      <h2>Effects of water pollution</h2>
-      <p class="lead">Polluted water affects health, wildlife and the whole environment.</p>
-      <div class="grid">
-        <article class="card">
-          <img src="images/patient.jpg" alt="Patient receiving medical care" loading="lazy">
-          <h3>Human health problems</h3>
-          <p>Unsafe water spreads diseases such as cholera, typhoid and diarrhoea, and long-term exposure to chemicals can damage organs.</p>
-        </article>
-        <article class="card">
-          <img src="images/death-fish.jpg" alt="Dead fish on a polluted shore" loading="lazy">
-          <h3>Death of aquatic animals</h3>
-          <p>Poisons, oil and low oxygen kill fish, turtles and other water life, and animals can also be trapped by plastic.</p>
-        </article>
-        <article class="card">
-          <img src="images/environmental-damage.jpg" alt="Environmental damage near water" loading="lazy">
-          <h3>Environmental damage</h3>
-          <p>Extra nutrients cause algae to take over lakes, harming plants and the food chain that depends on them.</p>
-        </article>
-        <article class="card">
-          <img src="images/dry-land.jpg" alt="Dry cracked land lacking water" loading="lazy">
-          <h3>Shortage of clean drinking water</h3>
-          <p>As more sources become unusable, people must travel farther or pay more for safe water, and many have no choice but to drink unsafe water.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- PREVENTION -->
-   <section id="prevention" class="section">
-
-    <h2>Prevention of Water Pollution</h2>
-
-    <div class="card-container">
-
-        <div class="card">
-            <h3>🚯 Avoid Plastic</h3>
-            <p>Never throw plastic waste into rivers and lakes.</p>
+        <div class="auth-tabs">
+            <button id="showLogin" type="button">Login</button>
+            <button id="showSignup" type="button">Sign Up</button>
         </div>
 
-        <div class="card">
-            <h3>🏭 Treat Wastewater</h3>
-            <p>Industries should treat wastewater before releasing it.</p>
-        </div>
+        <form id="loginForm">
+            <h2>Welcome!</h2>
+            <input type="email" id="loginEmail" placeholder="Email Address" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p><a href="#" id="forgotPassword">Forgot Password?</a></p>
+        </form>
 
-        <div class="card">
-            <h3>🌱 Reduce Chemicals</h3>
-            <p>Use fertilizers and pesticides responsibly.</p>
-        </div>
+        <form id="signupForm" class="hidden">
+            <h2>Create Account</h2>
+            <input type="text" id="signupName" placeholder="Full Name" required>
+            <input type="email" id="signupEmail" placeholder="Email Address" required>
+            <input type="password" id="signupPassword" placeholder="Password (minimum 6 characters)" required minlength="6">
+            <button type="submit">Create Account</button>
+        </form>
 
-        <div class="card">
-            <h3>🌊 Keep Water Clean</h3>
-            <p>Participate in cleaning rivers, lakes and ponds.</p>
-        </div>
-
-        <div class="card">
-            <h3>📢 Spread Awareness</h3>
-            <p>Educate people about protecting water resources.</p>
-        </div>
-
+        <p id="authMessage"></p>
     </div>
 
-</section> 
- 
-  <!-- MESSAGE -->
-  <section id="message" class="message">
-    <div class="container">
-      <h2>Our message</h2>
-      <h3>Save Water, Save Earth!</h3>
-      <p>Every Drop Counts.Every Action Matter.</p>
-        <p>Small-Drops Makes an Ocean</p>
-        <p>Save Today For Your Next Generation</p>
-    </div>
-  </section>
-
-  <!-- FEEDBACK -->
-  <section id="feedback" class="section">
-    <div class="container narrow">
-      <h2>Share your feedback</h2>
-      <p class="lead">We value your suggections and opinions.</p>
-      <form id="feedbackForm" class="feedback-card" novalidate>
-        <div id="suggectionsMsg" class="msg" role="alert" aria-live="polite"></div>
-        <label for="fbName">Your name</label>
-        <input type="text" id="fbName" autocomplete="name" placeholder="Your name" required>
-        <label for="fbEmail">Email address</label>
-        <input type="email" id="fbEmail" autocomplete="email" placeholder="you@example.com" required>
-        <label for="Suggestions</label>
-        <textarea id="suggestionsMessage" rows="5" placeholder="Write your suggestions..." required></textarea>
-        <button type="submit" class="btn" id="fbBtn">Submit</button>
-      </form>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <h3>Water Pollution Awareness </h3>
-      <p>Community Service Project</p>
-      <p>Save Water, Save life.</p>
-      <p>© 2026 Water Pollution Awareness</p>
-  </footer>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+
+<!-- MAIN WEBSITE -->
+
+<div id="mainWebsite" class="hidden">
+
+<header>
+    <nav class="navbar">
+        <a href="#home" class="logo">Aqua<span>Care</span></a>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#causes">Causes</a></li>
+            <li><a href="#effects">Effects</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+        </ul>
+
+        <div class="user-area">
+            <span id="userName"></span>
+            <button id="logoutBtn" type="button">Logout</button>
+        </div>
+    </nav>
+</header>
+
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Save Water, Save Life</h1>
+        <p>
+            Water is the source of life.
+            Protect our rivers, lakes and oceans
+            from pollution. Together, let's create
+            a cleaner and healthier planet.
+        </p>
+        <a href="#about" class="main-btn">Discover More</a>
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about section" id="about">
+    <div class="section-image">
+        <img src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=900"
+             alt="Clean water">
+    </div>
+
+    <div class="section-content">
+        <h2>About Water Pollution</h2>
+        <p>
+            Water pollution occurs when harmful substances
+            such as chemicals, plastic, sewage and waste
+            enter rivers, lakes, oceans and groundwater.
+        </p>
+        <p>
+            It affects aquatic life, human health and
+            the environment. Protecting water resources
+            is everyone's responsibility.
+        </p>
+    </div>
+</section>
+
+
+<!-- CAUSES -->
+
+<section class="section" id="causes">
+    <h2>Major Causes of Water Pollution</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=600"
+                 alt="Plastic waste">
+            <h3>Plastic Waste</h3>
+            <p>Plastic waste contaminates water bodies
+               and threatens aquatic organisms.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?w=600"
+                 alt="Industrial waste">
+            <h3>Industrial Waste</h3>
+            <p>Factories may release harmful chemicals
+               into nearby water sources.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=600"
+                 alt="Agricultural pollution">
+            <h3>Agricultural Waste</h3>
+            <p>Fertilizers and pesticides can reach
+               rivers and groundwater.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- EFFECTS -->
+
+<section class="effects section" id="effects">
+
+    <div class="section-image">
+        <img src="https://images.unsplash.com/photo-1484291470158-b8f8d608850d?w=900"
+             alt="Marine environment">
+    </div>
+
+    <div class="section-content">
+        <h2>Effects of Water Pollution</h2>
+
+        <p>Water pollution causes several environmental
+           and health problems.</p>
+
+        <ul>
+            <li>Damage to aquatic ecosystems</li>
+            <li>Spread of waterborne diseases</li>
+            <li>Loss of aquatic biodiversity</li>
+            <li>Contamination of drinking water</li>
+            <li>Environmental imbalance</li>
+        </ul>
+    </div>
+
+</section>
+
+
+<!-- SOLUTIONS -->
+
+<section class="section" id="solutions">
+    <h2>Solutions to Water Pollution</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15d?w=600"
+                 alt="Recycling">
+            <h3>Recycle Waste</h3>
+            <p>Reduce plastic usage and recycle
+               household materials.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600"
+                 alt="Green environment">
+            <h3>Protect Nature</h3>
+            <p>Keep rivers, lakes and surroundings
+               clean and green.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600"
+                 alt="Environmental awareness">
+            <h3>Create Awareness</h3>
+            <p>Educate communities about the
+               importance of clean water.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FEEDBACK -->
+
+<section class="feedback-section section" id="feedback">
+
+    <h2>Share Your Feedback</h2>
+    <p>We value your suggestions and opinions.</p>
+
+    <form id="feedbackForm">
+
+        <input type="text" id="feedbackName"
+               placeholder="Your Name" required>
+
+        <input type="email" id="feedbackEmail"
+               placeholder="Your Email" required>
+
+        <select id="feedbackRating" required>
+            <option value="">Select Your Rating</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Average">Average</option>
+            <option value="Needs Improvement">Needs Improvement</option>
+        </select>
+
+        <textarea id="feedbackMessage"
+                  placeholder="Write your feedback here..."
+                  required></textarea>
+
+        <button type="submit">Submit Feedback</button>
+
+        <p id="feedbackStatus"></p>
+
+    </form>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+  <h3>Community Service Project From Department Of CSE</h3>
+    <p>Save Water • Save Earth • Save Life</p>
+  <p>Small-Drop Makes an Ocean</p>
+  <p>Save Today For Your Next Generation</p>
+    <p>© 2026 Water Pollution Awareness. All Rights Reserved.</p>
+</footer>
+
+</div>
+
 <script type="module" src="script.js"></script>
+
 </body>
 </html>
