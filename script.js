@@ -24,9 +24,9 @@ const auth = firebase.auth();
    EMAILJS CONFIGURATION
 ================================= */
 
-const EMAILJS_PUBLIC_KEY = "YOUR_EMAILJS_PUBLIC_KEY";
-const EMAILJS_SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY = "QGwfGkJi-LGsBR9IS";
+const EMAILJS_SERVICE_ID = "service_y08nyqz";
+const EMAILJS_TEMPLATE_ID =" template_eldi74k";
 
 emailjs.init({
     publicKey: EMAILJS_PUBLIC_KEY
