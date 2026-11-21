@@ -309,7 +309,9 @@ feedbackForm.addEventListener("submit", async (e) => {
             document.getElementById("feedbackRating").value,
 
         message:
-            document.getElementById("feedbackMessage").value
+            document.getElementById("feedbackMessage").value,
+       suggestions:
+          document.getElementById("feedbackSuggestions").value
 
     };
 
@@ -341,5 +343,26 @@ feedbackForm.addEventListener("submit", async (e) => {
     }
 
 });
+// MOBILE MENU TOGGLE
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+
+    menuToggle.textContent =
+        navLinks.classList.contains("active") ? "✕" : "☰";
+});
+
+// CLOSE MENU AFTER CLICKING A LINK
+
+document.querySelectorAll("#navLinks a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuToggle.textContent = "☰";
+    });
+});
 
 console.log("AquaCare website JavaScript loaded successfully!");
+
