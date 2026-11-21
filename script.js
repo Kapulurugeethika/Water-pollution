@@ -338,7 +338,7 @@ feedbackForm.addEventListener("submit", async (e) => {
         console.error("EmailJS Error:", error);
 
         feedbackStatus.textContent =
-            "Unable to send feedback. Please try again.";
+            "Error: "+ (error.text || error.message || "Unknown error");
 
     }
 
