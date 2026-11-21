@@ -1,239 +1,600 @@
-/* =====================================================================
-   Water Pollution Awareness - script.js
-   Firebase Authentication (email/password) + EmailJS feedback
-   ===================================================================== */
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  signOut, onAuthStateChanged, updateProfile, sendPasswordResetEmail
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+/* =========================================
+   AQUACARE - WATER POLLUTION AWARENESS
+   OCEAN BLUE PROFESSIONAL THEME
+========================================= */
 
-/* ---------- 1. YOUR CONFIGURATION (replace the placeholders) ----------
-   Firebase web config and the EmailJS public key are designed to be public.
-   Security comes from Firebase "Authorized domains" and EmailJS domain
-   restrictions (see README steps). NEVER put EmailJS private keys,
-   Firebase service-account files or passwords in this file. */
-const firebaseConfig = {
-  apiKey: "AIzaSyC1MObspbNouwu8iT50HMppqemkyUW64Gw",
-  authDomain: "water-pollution-a35ca.firebaseapp.com",
-  projectId: "water-pollution-a35ca",
-  storageBucket: "water-pollution-a35ca.firebasestorage.app",
-  messagingSenderId: "295204696306",
-  appId: "1:295204696306:web:329e5056154aceb074606b",
-   measurementld:"G-G51QM7THKT"
-};
-const EMAILJS_PUBLIC_KEY = "QGwfGkJi-LGsBR9IS";
-const EMAILJS_SERVICE_ID = "service_y08nyqz";
-const EMAILJS_TEMPLATE_ID = "template_eldi74k";
-
-/* ---------- 2. Setup ---------- */
-const $ = (id) => document.getElementById(id);
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-const configReady = !firebaseConfig.apiKey.startsWith("YOUR_");
-let auth = null;
-if (configReady) {
-  auth = getAuth(initializeApp(firebaseConfig));
-}
-if (window.emailjs && !EMAILJS_PUBLIC_KEY.startsWith("YOUR_")) {
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* ---------- 3. Helpers ---------- */
-function showMsg(el, text, type) {
-  el.textContent = text;
-  el.className = "msg " + type;
-}
-function clearMsg(el) { el.textContent = ""; el.className = "msg"; }
-function setBusy(btn, busy, label) {
-  btn.disabled = busy;
-  if (label) btn.textContent = label;
-}
-function friendlyAuthError(code) {
-  const map = {
-    "auth/email-already-in-use": "This email is already registered. Please log in instead.",
-    "auth/invalid-email": "Please enter a valid email address.",
-    "auth/weak-password": "Password is too weak. Use at least 6 characters.",
-    "auth/user-not-found": "No account found with this email. Please sign up first.",
-    "auth/wrong-password": "Incorrect password. Please try again.",
-    "auth/invalid-credential": "Incorrect email or password. Please try again.",
-    "auth/too-many-requests": "Too many attempts. Please wait a few minutes and try again.",
-    "auth/network-request-failed": "Network error. Check your internet connection.",
-    "auth/operation-not-allowed": "Email/password sign-in is not enabled in Firebase yet."
-  };
-  return map[code] || "Something went wrong. Please try again.";
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
 }
 
-/* ---------- 4. Login / Signup tabs ---------- */
-const authMsg = $("authMsg");
-function switchTab(which) {
-  const login = which === "login";
-  $("loginForm").classList.toggle("hidden", !login);
-  $("signupForm").classList.toggle("hidden", login);
-  $("tabLogin").classList.toggle("active", login);
-  $("tabSignup").classList.toggle("active", !login);
-  $("tabLogin").setAttribute("aria-selected", login);
-  $("tabSignup").setAttribute("aria-selected", !login);
-  clearMsg(authMsg);
-}
-$("tabLogin").addEventListener("click", () => switchTab("login"));
-$("tabSignup").addEventListener("click", () => switchTab("signup"));
-
-if (!configReady) {
-  showMsg(authMsg, "Setup needed: add your Firebase config in script.js.", "error");
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0fbff;
+    color: #123b52;
+    line-height: 1.7;
 }
 
-/* ---------- 5. Signup ---------- */
-$("signupForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  clearMsg(authMsg);
-  const name = $("signName").value.trim();
-  const email = $("signEmail").value.trim();
-  const pass = $("signPassword").value;
-  const confirm = $("signConfirm").value;
+:root {
+    --dark-blue: #003049;
+    --ocean-blue: #006d9c;
+    --blue: #0096c7;
+    --turquoise: #00b4b8;
+    --aqua: #90e0ef;
+    --light: #eafaff;
+    --white: #ffffff;
+}
 
-  if (name.length < 2) return showMsg(authMsg, "Please enter your full name.", "error");
-  if (!EMAIL_RE.test(email)) return showMsg(authMsg, "Please enter a valid email address.", "error");
-  if (pass.length < 6) return showMsg(authMsg, "Password must be at least 6 characters.", "error");
-  if (pass !== confirm) return showMsg(authMsg, "Passwords do not match.", "error");
-  if (!auth) return showMsg(authMsg, "Firebase is not configured yet.", "error");
+.hidden {
+    display: none !important;
+}
 
-  const btn = $("signupBtn");
-  setBusy(btn, true, "Creating account...");
-  try {
-    const cred = await createUserWithEmailAndPassword(auth, email, pass);
-    await updateProfile(cred.user, { displayName: name });
-    $("welcomeUser").textContent = "Welcome, " + name + "!";
-    $("fbName").value = name;
-    $("signupForm").reset();
-  } catch (err) {
-    showMsg(authMsg, friendlyAuthError(err.code), "error");
-  } finally {
-    setBusy(btn, false, "Create account");
-  }
-});
+button, input, textarea, select {
+    font: inherit;
+}
 
-/* ---------- 6. Login ---------- */
-$("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  clearMsg(authMsg);
-  const email = $("loginEmail").value.trim();
-  const pass = $("loginPassword").value;
+/* =========================================
+   LOGIN AND SIGNUP
+========================================= */
 
-  if (!EMAIL_RE.test(email)) return showMsg(authMsg, "Please enter a valid email address.", "error");
-  if (!pass) return showMsg(authMsg, "Please enter your password.", "error");
-  if (!auth) return showMsg(authMsg, "Firebase is not configured yet.", "error");
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    background:
+        linear-gradient(135deg,
+        rgba(0, 35, 65, 0.88),
+        rgba(0, 150, 199, 0.65)),
+        url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1600")
+        center/cover no-repeat;
+}
 
-  const btn = $("loginBtn");
-  setBusy(btn, true, "Logging in...");
-  try {
-    await signInWithEmailAndPassword(auth, email, pass);
-    $("loginForm").reset();
-  } catch (err) {
-    showMsg(authMsg, friendlyAuthError(err.code), "error");
-  } finally {
-    setBusy(btn, false, "Log in");
-  }
-});
+.auth-box {
+    width: 100%;
+    max-width: 430px;
+    padding: 40px 35px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 22px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+}
 
-/* ---------- 7. Forgot password ---------- */
-$("forgotBtn").addEventListener("click", async () => {
-  clearMsg(authMsg);
-  const email = $("loginEmail").value.trim();
-  if (!EMAIL_RE.test(email)) return showMsg(authMsg, "Enter your email above, then click Forgot password.", "error");
-  if (!auth) return showMsg(authMsg, "Firebase is not configured yet.", "error");
-  try {
-    await sendPasswordResetEmail(auth, email);
-    showMsg(authMsg, "Password reset email sent. Check your inbox.", "success");
-  } catch (err) {
-    showMsg(authMsg, friendlyAuthError(err.code), "error");
-  }
-});
+.auth-box h1 {
+    color: var(--ocean-blue);
+    font-size: 36px;
+    letter-spacing: 1px;
+}
 
-/* ---------- 8. Logout ---------- */
-$("logoutBtn").addEventListener("click", async () => {
-  try { await signOut(auth); }
-  catch { alert("Could not log out. Please try again."); }
-});
+.auth-box > p {
+    color: #607d8b;
+    margin-bottom: 22px;
+}
 
-/* ---------- 9. Protect content: show only when signed in ---------- */
-if (auth) {
-  onAuthStateChanged(auth, (user) => {
-    const loggedIn = !!user;
-    $("authView").classList.toggle("hidden", loggedIn);
-    $("appView").classList.toggle("hidden", !loggedIn);
-    if (loggedIn) {
-      const name = user.displayName || user.email;
-      $("welcomeUser").textContent = "Welcome, " + name + "!";
-      if (!$("fbName").value) $("fbName").value = user.displayName || "";
-      $("fbEmail").value = user.email || "";
-      window.scrollTo(0, 0);
-    } else {
-      switchTab("login");
+.auth-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.auth-tabs button {
+    width: 50%;
+    padding: 12px;
+    border: none;
+    border-radius: 9px;
+    background: #dff5fa;
+    color: var(--dark-blue);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.auth-tabs button.active {
+    background: linear-gradient(120deg, #0077b6, #00b4b8);
+    color: white;
+}
+
+.auth-box form h2 {
+    color: var(--dark-blue);
+    margin-bottom: 18px;
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #c5e5ee;
+    border-radius: 9px;
+    outline: none;
+    background: #f5fcff;
+}
+
+.auth-box input:focus {
+    border-color: var(--turquoise);
+    box-shadow: 0 0 0 3px rgba(0, 180, 184, 0.12);
+}
+
+.auth-box form button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
+    color: white;
+    background: linear-gradient(120deg, #0077b6, #00b4b8);
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.auth-box form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 150, 199, 0.3);
+}
+
+.auth-box a {
+    color: var(--ocean-blue);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#authMessage {
+    margin-top: 15px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 48, 73, 0.97);
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.15);
+}
+
+.navbar {
+    max-width: 1250px;
+    margin: auto;
+    padding: 14px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+}
+
+.logo {
+    color: white;
+    font-size: 29px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #48e0d1;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #48e0d1;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+}
+
+#logoutBtn {
+    border: none;
+    border-radius: 20px;
+    padding: 9px 17px;
+    background: #00b4b8;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#logoutBtn:hover {
+    background: #0096c7;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    padding: 70px 9%;
+    background:
+        linear-gradient(90deg,
+        rgba(0, 31, 55, 0.88),
+        rgba(0, 100, 140, 0.35)),
+        url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1800")
+        center/cover no-repeat;
+}
+
+.hero-content {
+    max-width: 700px;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: clamp(40px, 6vw, 70px);
+    line-height: 1.15;
+    margin-bottom: 22px;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+    max-width: 600px;
+    font-size: 18px;
+    color: #e0faff;
+    margin-bottom: 30px;
+}
+
+.main-btn {
+    display: inline-block;
+    padding: 14px 30px;
+    background: linear-gradient(120deg, #00b4b8, #48e0d1);
+    border-radius: 30px;
+    color: #003049;
+    text-decoration: none;
+    font-weight: 800;
+    transition: 0.3s;
+}
+
+.main-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 180, 184, 0.35);
+}
+
+/* =========================================
+   GENERAL SECTIONS
+========================================= */
+
+.section {
+    padding: 85px 8%;
+}
+
+.section > h2,
+.feedback-section > h2 {
+    text-align: center;
+    font-size: 36px;
+    color: var(--dark-blue);
+    margin-bottom: 45px;
+}
+
+.section h2::after,
+.feedback-section > h2::after {
+    content: "";
+    display: block;
+    width: 75px;
+    height: 4px;
+    background: var(--turquoise);
+    margin: 12px auto 0;
+    border-radius: 5px;
+}
+
+.about,
+.effects {
+    display: flex;
+    align-items: center;
+    gap: 55px;
+    background: white;
+}
+
+.section-image {
+    flex: 1;
+    min-width: 0;
+}
+
+.section-image img {
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 60, 90, 0.15);
+}
+
+.section-content {
+    flex: 1;
+}
+
+.section-content h2 {
+    font-size: 34px;
+    color: var(--ocean-blue);
+    margin-bottom: 20px;
+}
+
+.section-content p {
+    margin-bottom: 15px;
+    color: #526b78;
+}
+
+.section-content ul {
+    padding-left: 25px;
+    color: #526b78;
+}
+
+.section-content li {
+    padding: 5px 0;
+}
+
+/* =========================================
+   CAUSES AND SOLUTIONS CARDS
+========================================= */
+
+#causes,
+#solutions {
+    background: linear-gradient(180deg, #eafaff, #dff6fa);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 70, 100, 0.09);
+    transition: 0.35s;
+    border-bottom: 4px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-bottom-color: var(--turquoise);
+    box-shadow: 0 15px 35px rgba(0, 100, 140, 0.18);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.card:hover img {
+    transform: scale(1.04);
+}
+
+.card h3 {
+    color: var(--ocean-blue);
+    font-size: 22px;
+    padding: 18px 20px 5px;
+}
+
+.card p {
+    padding: 0 20px 23px;
+    color: #607985;
+}
+
+/* =========================================
+   EFFECTS
+========================================= */
+
+.effects {
+    background: white;
+}
+
+/* =========================================
+   FEEDBACK
+========================================= */
+
+.feedback-section {
+    padding: 85px 20px;
+    text-align: center;
+    background:
+        linear-gradient(rgba(0, 43, 69, 0.91),
+        rgba(0, 109, 156, 0.88)),
+        url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1600")
+        center/cover;
+}
+
+.feedback-section > h2 {
+    color: white;
+}
+
+.feedback-section > p {
+    color: #d8faff;
+    margin-bottom: 30px;
+}
+
+#feedbackForm {
+    max-width: 580px;
+    margin: auto;
+    padding: 35px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+#feedbackForm input,
+#feedbackForm select,
+#feedbackForm textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 16px;
+    border: 1px solid #c7e5ec;
+    border-radius: 9px;
+    background: #f5fcff;
+    outline: none;
+}
+
+#feedbackForm input:focus,
+#feedbackForm select:focus,
+#feedbackForm textarea:focus {
+    border-color: var(--turquoise);
+}
+
+#feedbackForm textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+#feedbackForm button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(120deg, #0077b6, #00b4b8);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#feedbackForm button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 150, 199, 0.25);
+}
+
+#feedbackStatus {
+    margin-top: 15px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 35px 15px;
+    text-align: center;
+    color: white;
+    background: #002b45;
+}
+
+footer h3 {
+    font-size: 27px;
+    color: #48e0d1;
+    margin-bottom: 8px;
+}
+
+footer p {
+    color: #c7eaf3;
+    font-size: 14px;
+    margin: 5px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
     }
-  });
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about,
+    .effects {
+        gap: 30px;
+    }
 }
 
-/* ---------- 10. Mobile menu ---------- */
-const menuToggle = $("menuToggle"), navLinks = $("navLinks");
-menuToggle.addEventListener("click", () => {
-  const open = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", open);
-});
-navLinks.querySelectorAll("a").forEach((a) =>
-  a.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-  })
-);
+@media (max-width: 650px) {
 
-/* ---------- 11. Star rating ---------- */
-let rating = 0;
-const stars = [...document.querySelectorAll("#stars button")];
-function paintStars(n) {
-  stars.forEach((s) => {
-    const v = Number(s.dataset.value);
-    s.classList.toggle("on", v <= n);
-    s.setAttribute("aria-checked", v === rating);
-  });
+    .navbar {
+        flex-direction: column;
+        padding: 12px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .user-area {
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 500px;
+        padding: 50px 7%;
+        background-position: center;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .section {
+        padding: 60px 6%;
+    }
+
+    .section > h2,
+    .feedback-section > h2 {
+        font-size: 28px;
+    }
+
+    .about,
+    .effects {
+        flex-direction: column;
+    }
+
+    .section-image img {
+        height: 250px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-box {
+        padding: 30px 20px;
+    }
+
+    #feedbackForm {
+        padding: 22px;
+    }
 }
-stars.forEach((s) => {
-  s.addEventListener("click", () => { rating = Number(s.dataset.value); paintStars(rating); });
-  s.addEventListener("mouseenter", () => paintStars(Number(s.dataset.value)));
-});
-$("stars").addEventListener("mouseleave", () => paintStars(rating));
-
-/* ---------- 12. Feedback via EmailJS ---------- */
-const fbMsg = $("feedbackMsg");
-$("feedbackForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  clearMsg(fbMsg);
-  const name = $("fbName").value.trim();
-  const email = $("fbEmail").value.trim();
-  const message = $("suggestionsMessage").value.trim();
-
-  if (name.length < 2) return showMsg(fbMsg, "Please enter your name.", "error");
-  if (!EMAIL_RE.test(email)) return showMsg(fbMsg, "Please enter a valid email address.", "error");
-  if (message.length < 5) return showMsg(fbMsg, "Please write your suggestion message.", "error");
-  if (!window.emailjs || EMAILJS_PUBLIC_KEY.startsWith("YOUR_")) {
-    return showMsg(fbMsg, "Setup needed: add your EmailJS keys in script.js.", "error");
-  }
-
-  const btn = $("fbBtn");
-  setBusy(btn, true, "Sending...");
-  try {
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      user_name: name,
-      user_email: email,
-      message: message
-    });
-    showMsg(fbMsg, "Thank you! Your feedback was sent successfully.", "success");
-    $("suggestionsMessage").value = "";
-    rating = 0;
-    paintStars(0);
-  } catch (err) {
-    showMsg(fbMsg, "Unable to send feedback. Please try again later.", "error");
-  } finally {
-    setBusy(btn, false, "Submit ");
-  }
-});
