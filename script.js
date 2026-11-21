@@ -1,600 +1,345 @@
-/* =========================================
+/* ==========================================
    AQUACARE - WATER POLLUTION AWARENESS
-   OCEAN BLUE PROFESSIONAL THEME
-========================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 85px;
-}
-
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f0fbff;
-    color: #123b52;
-    line-height: 1.7;
-}
-
-:root {
-    --dark-blue: #003049;
-    --ocean-blue: #006d9c;
-    --blue: #0096c7;
-    --turquoise: #00b4b8;
-    --aqua: #90e0ef;
-    --light: #eafaff;
-    --white: #ffffff;
-}
-
-.hidden {
-    display: none !important;
-}
-
-button, input, textarea, select {
-    font: inherit;
-}
-
-/* =========================================
-   LOGIN AND SIGNUP
-========================================= */
-
-.auth-container {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-    background:
-        linear-gradient(135deg,
-        rgba(0, 35, 65, 0.88),
-        rgba(0, 150, 199, 0.65)),
-        url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1600")
-        center/cover no-repeat;
-}
-
-.auth-box {
-    width: 100%;
-    max-width: 430px;
-    padding: 40px 35px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.94);
-    border-radius: 22px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(15px);
-}
-
-.auth-box h1 {
-    color: var(--ocean-blue);
-    font-size: 36px;
-    letter-spacing: 1px;
-}
-
-.auth-box > p {
-    color: #607d8b;
-    margin-bottom: 22px;
-}
-
-.auth-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
-.auth-tabs button {
-    width: 50%;
-    padding: 12px;
-    border: none;
-    border-radius: 9px;
-    background: #dff5fa;
-    color: var(--dark-blue);
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.auth-tabs button.active {
-    background: linear-gradient(120deg, #0077b6, #00b4b8);
-    color: white;
-}
-
-.auth-box form h2 {
-    color: var(--dark-blue);
-    margin-bottom: 18px;
-}
-
-.auth-box input {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 15px;
-    border: 1px solid #c5e5ee;
-    border-radius: 9px;
-    outline: none;
-    background: #f5fcff;
-}
-
-.auth-box input:focus {
-    border-color: var(--turquoise);
-    box-shadow: 0 0 0 3px rgba(0, 180, 184, 0.12);
-}
-
-.auth-box form button {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 9px;
-    color: white;
-    background: linear-gradient(120deg, #0077b6, #00b4b8);
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.auth-box form button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 150, 199, 0.3);
-}
-
-.auth-box a {
-    color: var(--ocean-blue);
-    text-decoration: none;
-    font-size: 14px;
-}
-
-#authMessage {
-    margin-top: 15px;
-    font-weight: 600;
-    overflow-wrap: anywhere;
-}
-
-/* =========================================
-   NAVIGATION
-========================================= */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(0, 48, 73, 0.97);
-    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.15);
-}
-
-.navbar {
-    max-width: 1250px;
-    margin: auto;
-    padding: 14px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 18px;
-}
-
-.logo {
-    color: white;
-    font-size: 29px;
-    font-weight: 800;
-    text-decoration: none;
-}
-
-.logo span {
-    color: #48e0d1;
-}
-
-.nav-links {
-    display: flex;
-    gap: 22px;
-    list-style: none;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.nav-links a:hover {
-    color: #48e0d1;
-}
-
-.user-area {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: white;
-}
-
-#logoutBtn {
-    border: none;
-    border-radius: 20px;
-    padding: 9px 17px;
-    background: #00b4b8;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-#logoutBtn:hover {
-    background: #0096c7;
-}
-
-/* =========================================
-   HERO SECTION
-========================================= */
-
-.hero {
-    min-height: 620px;
-    display: flex;
-    align-items: center;
-    padding: 70px 9%;
-    background:
-        linear-gradient(90deg,
-        rgba(0, 31, 55, 0.88),
-        rgba(0, 100, 140, 0.35)),
-        url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1800")
-        center/cover no-repeat;
-}
-
-.hero-content {
-    max-width: 700px;
-    color: white;
-}
-
-.hero-content h1 {
-    font-size: clamp(40px, 6vw, 70px);
-    line-height: 1.15;
-    margin-bottom: 22px;
-    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
-}
-
-.hero-content p {
-    max-width: 600px;
-    font-size: 18px;
-    color: #e0faff;
-    margin-bottom: 30px;
-}
-
-.main-btn {
-    display: inline-block;
-    padding: 14px 30px;
-    background: linear-gradient(120deg, #00b4b8, #48e0d1);
-    border-radius: 30px;
-    color: #003049;
-    text-decoration: none;
-    font-weight: 800;
-    transition: 0.3s;
-}
-
-.main-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 180, 184, 0.35);
-}
-
-/* =========================================
-   GENERAL SECTIONS
-========================================= */
-
-.section {
-    padding: 85px 8%;
-}
-
-.section > h2,
-.feedback-section > h2 {
-    text-align: center;
-    font-size: 36px;
-    color: var(--dark-blue);
-    margin-bottom: 45px;
-}
-
-.section h2::after,
-.feedback-section > h2::after {
-    content: "";
-    display: block;
-    width: 75px;
-    height: 4px;
-    background: var(--turquoise);
-    margin: 12px auto 0;
-    border-radius: 5px;
-}
-
-.about,
-.effects {
-    display: flex;
-    align-items: center;
-    gap: 55px;
-    background: white;
-}
-
-.section-image {
-    flex: 1;
-    min-width: 0;
-}
-
-.section-image img {
-    width: 100%;
-    height: 370px;
-    object-fit: cover;
-    border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(0, 60, 90, 0.15);
-}
-
-.section-content {
-    flex: 1;
-}
-
-.section-content h2 {
-    font-size: 34px;
-    color: var(--ocean-blue);
-    margin-bottom: 20px;
-}
-
-.section-content p {
-    margin-bottom: 15px;
-    color: #526b78;
-}
-
-.section-content ul {
-    padding-left: 25px;
-    color: #526b78;
-}
-
-.section-content li {
-    padding: 5px 0;
-}
-
-/* =========================================
-   CAUSES AND SOLUTIONS CARDS
-========================================= */
-
-#causes,
-#solutions {
-    background: linear-gradient(180deg, #eafaff, #dff6fa);
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.card {
-    background: white;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 70, 100, 0.09);
-    transition: 0.35s;
-    border-bottom: 4px solid transparent;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    border-bottom-color: var(--turquoise);
-    box-shadow: 0 15px 35px rgba(0, 100, 140, 0.18);
-}
-
-.card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    transition: 0.4s;
-}
-
-.card:hover img {
-    transform: scale(1.04);
-}
-
-.card h3 {
-    color: var(--ocean-blue);
-    font-size: 22px;
-    padding: 18px 20px 5px;
-}
-
-.card p {
-    padding: 0 20px 23px;
-    color: #607985;
-}
-
-/* =========================================
-   EFFECTS
-========================================= */
-
-.effects {
-    background: white;
-}
-
-/* =========================================
-   FEEDBACK
-========================================= */
-
-.feedback-section {
-    padding: 85px 20px;
-    text-align: center;
-    background:
-        linear-gradient(rgba(0, 43, 69, 0.91),
-        rgba(0, 109, 156, 0.88)),
-        url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1600")
-        center/cover;
-}
-
-.feedback-section > h2 {
-    color: white;
-}
-
-.feedback-section > p {
-    color: #d8faff;
-    margin-bottom: 30px;
-}
-
-#feedbackForm {
-    max-width: 580px;
-    margin: auto;
-    padding: 35px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-
-#feedbackForm input,
-#feedbackForm select,
-#feedbackForm textarea {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 16px;
-    border: 1px solid #c7e5ec;
-    border-radius: 9px;
-    background: #f5fcff;
-    outline: none;
-}
-
-#feedbackForm input:focus,
-#feedbackForm select:focus,
-#feedbackForm textarea:focus {
-    border-color: var(--turquoise);
-}
-
-#feedbackForm textarea {
-    min-height: 130px;
-    resize: vertical;
-}
-
-#feedbackForm button {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(120deg, #0077b6, #00b4b8);
-    color: white;
-    border: none;
-    border-radius: 9px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#feedbackForm button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 150, 199, 0.25);
-}
-
-#feedbackStatus {
-    margin-top: 15px;
-    font-weight: 600;
-    overflow-wrap: anywhere;
-}
-
-/* =========================================
-   FOOTER
-========================================= */
-
-footer {
-    padding: 35px 15px;
-    text-align: center;
-    color: white;
-    background: #002b45;
-}
-
-footer h3 {
-    font-size: 27px;
-    color: #48e0d1;
-    margin-bottom: 8px;
-}
-
-footer p {
-    color: #c7eaf3;
-    font-size: 14px;
-    margin: 5px;
-}
-
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
-
-@media (max-width: 1000px) {
-
-    .navbar {
-        flex-wrap: wrap;
-        justify-content: center;
+   Firebase Authentication + EmailJS Feedback
+========================================== */
+
+// FIREBASE IMPORTS
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged,
+    updateProfile,
+    sendPasswordResetEmail
+} from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import emailjs from
+"https://cdn.jsdelivr.net/npm/@emailjs/browser@4/+esm";
+
+
+// ==========================================
+// FIREBASE CONFIGURATION
+// ==========================================
+
+const firebaseConfig = {
+    apiKey: "AIzaSyC1MObspbNouwu8iT50HMppqemkyUW64Gw",
+    authDomain: "water-pollution-a35ca.firebaseapp.com",
+    projectId: "water-pollution-a35ca",
+    storageBucket: "water-pollution-a35ca.firebasestorage.app",
+    messagingSenderId: "295204696306",
+    appId: "1:295204696306:web:c0a3846e2f85014b74606b",
+    measurementId: "G-8SZJD6K2EN"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+
+// ==========================================
+// HTML ELEMENTS
+// ==========================================
+
+const authContainer = document.getElementById("authContainer");
+const mainWebsite = document.getElementById("mainWebsite");
+
+const loginForm = document.getElementById("loginForm");
+const signupForm = document.getElementById("signupForm");
+
+const showLogin = document.getElementById("showLogin");
+const showSignup = document.getElementById("showSignup");
+
+const authMessage = document.getElementById("authMessage");
+const userName = document.getElementById("userName");
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+
+// ==========================================
+// LOGIN / SIGNUP TAB SWITCHING
+// ==========================================
+
+showLogin.addEventListener("click", () => {
+
+    loginForm.classList.remove("hidden");
+    signupForm.classList.add("hidden");
+
+    showLogin.classList.add("active");
+    showSignup.classList.remove("active");
+
+    authMessage.textContent = "";
+});
+
+showSignup.addEventListener("click", () => {
+
+    signupForm.classList.remove("hidden");
+    loginForm.classList.add("hidden");
+
+    showSignup.classList.add("active");
+    showLogin.classList.remove("active");
+
+    authMessage.textContent = "";
+});
+
+// Default tab
+showLogin.classList.add("active");
+
+
+// ==========================================
+// USER SIGNUP
+// ==========================================
+
+signupForm.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const name = document.getElementById("signupName").value.trim();
+    const email = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value;
+
+    try {
+
+        authMessage.textContent = "Creating your account...";
+
+        const result = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+        await updateProfile(result.user, {
+            displayName: name
+        });
+
+        authMessage.textContent = "Account created successfully!";
+
+        signupForm.reset();
+
+    } catch (error) {
+
+        authMessage.textContent = error.message;
+
     }
 
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
+});
+
+
+// ==========================================
+// USER LOGIN
+// ==========================================
+
+loginForm.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    try {
+
+        authMessage.textContent = "Logging in...";
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+        authMessage.textContent = "Login successful!";
+
+        loginForm.reset();
+
+    } catch (error) {
+
+        authMessage.textContent = error.message;
+
     }
 
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
+});
+
+
+// ==========================================
+// FORGOT PASSWORD
+// ==========================================
+
+document.getElementById("forgotPassword")
+.addEventListener("click", async (e) => {
+
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+
+    if (!email) {
+
+        authMessage.textContent =
+            "Please enter your email address first.";
+
+        return;
+
     }
 
-    .about,
-    .effects {
-        gap: 30px;
-    }
-}
+    try {
 
-@media (max-width: 650px) {
+        await sendPasswordResetEmail(auth, email);
 
-    .navbar {
-        flex-direction: column;
-        padding: 12px;
-    }
+        authMessage.textContent =
+            "Password reset link sent to your email.";
 
-    .nav-links {
-        gap: 12px;
+    } catch (error) {
+
+        authMessage.textContent = error.message;
+
     }
 
-    .nav-links a {
-        font-size: 13px;
+});
+
+
+// ==========================================
+// AUTHENTICATION STATE
+// ==========================================
+
+onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+
+        authContainer.classList.add("hidden");
+        mainWebsite.classList.remove("hidden");
+
+        userName.textContent =
+            "Welcome, " + (user.displayName || user.email);
+
+        const feedbackName =
+            document.getElementById("feedbackName");
+
+        const feedbackEmail =
+            document.getElementById("feedbackEmail");
+
+        if (feedbackName && user.displayName) {
+            feedbackName.value = user.displayName;
+        }
+
+        if (feedbackEmail) {
+            feedbackEmail.value = user.email || "";
+        }
+
+    } else {
+
+        authContainer.classList.remove("hidden");
+        mainWebsite.classList.add("hidden");
+
+        userName.textContent = "";
+
     }
 
-    .user-area {
-        justify-content: center;
+});
+
+
+// ==========================================
+// LOGOUT
+// ==========================================
+
+logoutBtn.addEventListener("click", async () => {
+
+    try {
+
+        await signOut(auth);
+
+        authMessage.textContent = "Logged out successfully!";
+
+    } catch (error) {
+
+        console.error(error);
+
     }
 
-    .hero {
-        min-height: 500px;
-        padding: 50px 7%;
-        background-position: center;
+});
+
+
+// ==========================================
+// EMAILJS CONFIGURATION
+// Add your IDs after creating EmailJS service
+// ==========================================
+
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+
+
+// ==========================================
+// FEEDBACK FORM
+// ==========================================
+
+const feedbackForm =
+    document.getElementById("feedbackForm");
+
+feedbackForm.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const feedbackStatus =
+        document.getElementById("feedbackStatus");
+
+    if (
+        EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY" ||
+        EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID" ||
+        EMAILJS_TEMPLATE_ID === "YOUR_TEMPLATE_ID"
+    ) {
+
+        feedbackStatus.textContent =
+            "EmailJS setup is pending. Please configure it first.";
+
+        return;
+
     }
 
-    .hero-content h1 {
-        font-size: 42px;
+    const templateParams = {
+
+        from_name:
+            document.getElementById("feedbackName").value,
+
+        from_email:
+            document.getElementById("feedbackEmail").value,
+
+        rating:
+            document.getElementById("feedbackRating").value,
+
+        message:
+            document.getElementById("feedbackMessage").value
+
+    };
+
+    try {
+
+        feedbackStatus.textContent = "Sending feedback...";
+
+        await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            templateParams,
+            {
+                publicKey: EMAILJS_PUBLIC_KEY
+            }
+        );
+
+        feedbackStatus.textContent =
+            "Thank you! Your feedback was submitted successfully.";
+
+        feedbackForm.reset();
+
+    } catch (error) {
+
+        console.error("EmailJS Error:", error);
+
+        feedbackStatus.textContent =
+            "Unable to send feedback. Please try again.";
+
     }
 
-    .hero-content p {
-        font-size: 16px;
-    }
+});
 
-    .section {
-        padding: 60px 6%;
-    }
-
-    .section > h2,
-    .feedback-section > h2 {
-        font-size: 28px;
-    }
-
-    .about,
-    .effects {
-        flex-direction: column;
-    }
-
-    .section-image img {
-        height: 250px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .auth-box {
-        padding: 30px 20px;
-    }
-
-    #feedbackForm {
-        padding: 22px;
-    }
-}
+console.log("AquaCare website JavaScript loaded successfully!");
