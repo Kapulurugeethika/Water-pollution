@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Water Pollution Awareness</title>
+    <meta name="description" content="Community Service Project: Promoting Clean Water And Environmental Awareness in Society.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link herf="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 
@@ -72,15 +76,18 @@
 
 <!-- MAIN WEBSITE -->
 
-<div id="mainWebsite" class="hidden">
+<div id="appView" class="hidden">
 
-<header>
-
+<header class="navbar">
+    <a href="#home" class="brand">💧water pollution</a>a>
+    <button class="menu-toggle" id="menuToggle" aria-lable="Toggle menu" aria-expanded="flase" type="button">☰</button>
+   
     <h1>💧Save Water, Save Life. </h1>
 
     <p>Promoting Clean Water And Environmental Awareness in Society</p>
 
-    <nav>
+     <nav id="navLinks">
+
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#causes">Causes</a>
@@ -311,6 +318,7 @@
 <!-- FEEDBACK -->
 
 <section id="feedback" class="section">
+    <div class="container narrow">
 
     <h2>Share Your Feedback</h2>
 
@@ -335,11 +343,11 @@
     <option value="1">⭐ - Poor</option>
 </select>
 <label>Suggestions</label>
-        <textarea id="feedbackMessage"
-        placeholder="Write your feedback..."
+        <textarea id="suggestionsMessage"
+        placeholder="Write your suggestions..."
         required></textarea>
 
-        <button type="submit">Submit Feedback</button>
+        <button type="submit">Submit</button>
 
         <p id="feedbackStatus"></p>
 
