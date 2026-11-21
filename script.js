@@ -18,6 +18,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
+const db = firebase.firestore();
 
 
 /* =================================
@@ -268,7 +269,7 @@ feedbackForm.addEventListener("submit", async function(e) {
 
     const rating = document.getElementById("rating").value;
 
-    const message = document.getElementById("feedbackMessage").value.trim();
+    const message = document.getElementById("suggestionsMessage").value.trim();
 
     const status = document.getElementById("feedbackStatus");
 
@@ -300,7 +301,7 @@ feedbackForm.addEventListener("submit", async function(e) {
                 user_name: name,
                 user_email: email,
                 rating: rating,
-                feedback_message: message
+                suggestions_message: message
             }
         );
 
