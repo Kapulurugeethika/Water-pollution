@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Pollution Awareness</title>
+    <title>Water Pollution </title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
 <div class="auth-container" id="authContainer">
 
     <div class="auth-box">
-        <h1>Clean Water Mission</h1>
+        <h1>💧Clean Water Mission</h1>
         <p>"Save water, Save life"</p>
       <p>Promoting Clean Water And Environmental Awareness in Society</p>
 
@@ -50,24 +50,29 @@
 
 <header>
     <nav class="navbar">
-        <a href="#home" class="logo">Aqua<span>Care</span></a>
 
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#causes">Causes</a></li>
-            <li><a href="#effects">Effects</a></li>
-            <li><a href="#solutions">Solutions</a></li>
-            <li><a href="#feedback">Feedback</a></li>
+        <a href="#home" class="logo">💧 Aqua<span>Care</span></a>
+
+        <button class="menu-toggle" id="menuToggle" type="button">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">🏠 Home</a></li>
+            <li><a href="#about">ℹ️ About</a></li>
+            <li><a href="#causes">⚠️ Causes</a></li>
+            <li><a href="#effects">💧 Effects</a></li>
+            <li><a href="#solutions">🌿 Solutions</a></li>
+            <li><a href="#feedback">💬 Feedback</a></li>
         </ul>
 
         <div class="user-area">
             <span id="userName"></span>
             <button id="logoutBtn" type="button">Logout</button>
         </div>
+
     </nav>
 </header>
-
 
 <!-- HOME -->
 
@@ -232,8 +237,11 @@
         <textarea id="feedbackMessage"
                   placeholder="Write your feedback here..."
                   required></textarea>
+        <textarea id="feedbackSuggestions"
+            placeholder="Share your suggestions to improve AquaCare..."
+            row="4"></textarea>
 
-        <button type="submit">Submit Feedback</button>
+        <button type="submit">Submit</button>
 
         <p id="feedbackStatus"></p>
 
@@ -247,7 +255,7 @@
 <footer>
   <h3>Community Service Project From Department Of CSE</h3>
     <p>Save Water • Save Earth • Save Life</p>
-  <p>Small-Drop Makes an Ocean</p>
+  <p>💧Small-Drop Makes an Ocean</p>
   <p>Save Today For Your Next Generation</p>
     <p>© 2026 Water Pollution Awareness. All Rights Reserved.</p>
 </footer>
