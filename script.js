@@ -266,7 +266,7 @@ logoutBtn.addEventListener("click", async () => {
 // ==========================================
 
 const EMAILJS_PUBLIC_KEY = "QGwfGkJi-LGsBR9IS";
-const EMAILJS_SERVICE_ID = "service_5u5q8vq";
+const EMAILJS_SERVICE_ID = "service_y08nyqz";
 const EMAILJS_TEMPLATE_ID = "template_eldi74k";
 
 
