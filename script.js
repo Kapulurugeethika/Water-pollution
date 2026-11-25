@@ -309,7 +309,9 @@ feedbackForm.addEventListener("submit", async (e) => {
             document.getElementById("feedbackRating").value,
 
         message:
-            document.getElementById("feedbackMessage").value.
+            document.getElementById("feedbackMessage").value,
+       suggestions:
+          document.getElementById("feedbackSuggestions").value.
 
     };
 
